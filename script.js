@@ -199,7 +199,25 @@ function showScreen(name) {
   }
 }
 
+function renderOptionButtons(containerId, options, selected, onPick) {
+  const box = $(containerId);
+  box.innerHTML = "";
+  for (const [value, label] of options) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = label;
+    btn.classList.toggle("selected", value === selected);
+    btn.addEventListener("click", () => onPick(value));
+    box.appendChild(btn);
+  }
+}
+
 function renderStart() {
+  renderOptionButtons("mode-buttons", Object.entries(MODES).map(([k, m]) => [k, m.label]), state.mode, mode => {
+    state.mode = mode;
+    renderStart();
+  });
+  $("start-notice").hidden = MODES[state.mode].ranked;
   const box = $("category-buttons");
   box.innerHTML = "";
   for (const c of CATEGORIES) {
