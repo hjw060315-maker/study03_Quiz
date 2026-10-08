@@ -42,12 +42,12 @@ const QUESTIONS = [
   {
     id: "kh-05",
     category: "한국사",
-    question: "1377년 청주 흥덕사에서 금속활자로 찍었고, 지금 프랑스 국립도서관에 있는 책은?",
-    choices: ["직지심체요절", "상정고금예문", "삼국사기", "동국통감"],
+    question: "세종 때 만들어 빗물의 양(강우량)을 재는 데 쓴 기구는?",
+    choices: ["측우기", "자격루", "혼천의", "해시계"],
     answer: 0,
-    explanation: "『직지심체요절』 금속활자본 1건이 프랑스 국립도서관에 소장되어 있다.",
-    source: "한국민족문화대백과사전 '불조직지심체요절'",
-    sourceUrl: "https://encykorea.aks.ac.kr/Article/E0025035"
+    explanation: "측우기는 세종 때 만든, 조선의 공식 강우량 측정 기구다.",
+    source: "한국민족문화대백과사전 '측우기'",
+    sourceUrl: "https://encykorea.aks.ac.kr/Article/E0058337"
   },
   {
     id: "kh-06",
@@ -112,22 +112,22 @@ const QUESTIONS = [
   {
     id: "wg-02",
     category: "세계지리",
-    question: "이집트의 수에즈 운하가 연결하는 두 바다는?",
-    choices: ["지중해와 홍해", "지중해와 흑해", "홍해와 아라비아해", "흑해와 카스피해"],
+    question: "적도(Equator)에서 나라 이름을 따온 남아메리카의 나라는?",
+    choices: ["에콰도르", "콜롬비아", "베네수엘라", "볼리비아"],
     answer: 0,
-    explanation: "수에즈 운하는 지중해와 홍해를 이어, 배가 아프리카를 돌아가지 않게 해 준다.",
-    source: "Encyclopaedia Britannica 'Suez Canal'",
-    sourceUrl: "https://www.britannica.com/topic/Suez-Canal"
+    explanation: "에콰도르는 나라를 가로지르는 적도에서 이름을 따왔다.",
+    source: "Encyclopaedia Britannica 'Ecuador'",
+    sourceUrl: "https://www.britannica.com/place/Ecuador"
   },
   {
     id: "wg-03",
     category: "세계지리",
-    question: "경도 0°인 본초 자오선이 지나는 영국 런던의 지역은?",
-    choices: ["그리니치", "웨스트민스터", "캠던", "첼시"],
+    question: "요르단과 이스라엘 사이에 있는, 바다처럼 짠 소금 호수는?",
+    choices: ["사해", "홍해", "흑해", "황해"],
     answer: 0,
-    explanation: "1884년 국제 회의에서 그리니치 천문대를 지나는 경선을 본초 자오선으로 정했다.",
-    source: "National Geographic Education 'Prime Meridian'",
-    sourceUrl: "https://education.nationalgeographic.org/resource/prime-meridian/"
+    explanation: "사해는 이스라엘과 요르단 사이의 움푹 꺼진 낮은 땅에 있는 소금 호수다.",
+    source: "NASA Earth Observatory 'The Dead Sea'",
+    sourceUrl: "https://science.nasa.gov/earth/earth-observatory/the-dead-sea-77592/"
   },
   {
     id: "wg-04",
@@ -182,32 +182,32 @@ const QUESTIONS = [
   {
     id: "wg-09",
     category: "세계지리",
-    question: "해발 고도 기준으로 아프리카에서 가장 높은 산인 킬리만자로산이 있는 나라는?",
-    choices: ["탄자니아", "케냐", "에티오피아", "우간다"],
+    question: "아프리카 북동부를 지나 북쪽으로 흐르는 나일강이 흘러드는 바다는?",
+    choices: ["지중해", "홍해", "흑해", "북해"],
     answer: 0,
-    explanation: "킬리만자로산은 탄자니아 북동부, 케냐 국경 가까이에 있는 화산이다.",
-    source: "Encyclopaedia Britannica 'Kilimanjaro'",
-    sourceUrl: "https://www.britannica.com/place/Kilimanjaro"
+    explanation: "나일강은 북쪽으로 흘러 이집트 해안에서 지중해로 들어간다.",
+    source: "National Geographic Education 'Nile River'",
+    sourceUrl: "https://education.nationalgeographic.org/resource/nile-river/"
   },
   {
     id: "wg-10",
     category: "세계지리",
-    question: "안데스산맥에 남아 있는 잉카 제국의 유적 마추픽추가 있는 나라는?",
-    choices: ["페루", "볼리비아", "칠레", "에콰도르"],
+    question: "면적 기준으로 세계에서 가장 넓은 대양은?",
+    choices: ["태평양", "대서양", "인도양", "북극해"],
     answer: 0,
-    explanation: "마추픽추는 페루의 안데스산맥에 남아 있는 잉카 제국의 대표 유적이다.",
-    source: "UNESCO World Heritage Centre 'Historic Sanctuary of Machu Picchu'",
-    sourceUrl: "https://whc.unesco.org/en/list/274/"
+    explanation: "태평양은 아시아·오스트레일리아와 아메리카 대륙 사이에 있는 가장 넓은 대양이다.",
+    source: "NOAA(미국 해양대기청) 'What is the biggest ocean?'",
+    sourceUrl: "https://oceanservice.noaa.gov/facts/biggestocean.html"
   },
   {
     id: "sc-01",
     category: "과학",
-    question: "식물 세포에서 광합성이 일어나는 세포 소기관은?",
-    choices: ["엽록체", "미토콘드리아", "리보솜", "골지체"],
+    question: "소리의 세기(크기)를 나타낼 때 쓰는 단위는?",
+    choices: ["데시벨", "헤르츠", "칸델라", "파스칼"],
     answer: 0,
-    explanation: "엽록체는 빛에너지를 화학 에너지로 바꾸는 광합성이 일어나는 곳이다.",
-    source: "Encyclopaedia Britannica 'chloroplast'",
-    sourceUrl: "https://www.britannica.com/science/chloroplast"
+    explanation: "데시벨(dB)은 소리의 세기를 비교해 나타내는 단위로, 소음 기준에도 쓰인다.",
+    source: "Encyclopaedia Britannica 'decibel'",
+    sourceUrl: "https://www.britannica.com/science/decibel"
   },
   {
     id: "sc-02",
@@ -252,32 +252,32 @@ const QUESTIONS = [
   {
     id: "sc-06",
     category: "과학",
-    question: "1928년 세균 배양 접시에 핀 곰팡이에서 페니실린을 발견한 과학자는?",
-    choices: ["플레밍", "파스퇴르", "코흐", "제너"],
+    question: "멘델이 유전 법칙을 밝히려고 교배 실험에 쓴 식물은?",
+    choices: ["완두", "옥수수", "강낭콩", "보리"],
     answer: 0,
-    explanation: "플레밍은 1928년 페니실린을 발견해 1945년 노벨 생리의학상을 받았다.",
-    source: "노벨상 공식 사이트 'Sir Alexander Fleming – Facts'",
-    sourceUrl: "https://www.nobelprize.org/prizes/medicine/1945/fleming/facts/"
+    explanation: "멘델은 완두를 수천 번 교배해 형질이 유전되는 규칙을 찾아냈다.",
+    source: "미국 국립인간게놈연구소(NHGRI) 'Mendelian Inheritance'",
+    sourceUrl: "https://www.genome.gov/genetics-glossary/Mendelian-Inheritance"
   },
   {
     id: "sc-07",
     category: "과학",
-    question: "DNA의 이중 나선 구조 모형을 제안한 두 과학자는?",
-    choices: ["왓슨과 크릭", "멘델과 모건", "퀴리와 보어", "파스퇴르와 코흐"],
+    question: "태양계 행성 가운데 질량이 가장 큰 행성은?",
+    choices: ["목성", "토성", "천왕성", "해왕성"],
     answer: 0,
-    explanation: "왓슨과 크릭은 핵산의 분자 구조를 밝힌 공로로 노벨 생리의학상을 받았다.",
-    source: "노벨상 공식 사이트 'The Nobel Prize in Physiology or Medicine 1962'",
-    sourceUrl: "https://www.nobelprize.org/prizes/medicine/1962/summary/"
+    explanation: "목성은 태양계 행성 가운데 질량과 크기가 모두 가장 큰 행성이다.",
+    source: "Encyclopaedia Britannica 'Jupiter'",
+    sourceUrl: "https://www.britannica.com/place/Jupiter-planet"
   },
   {
     id: "sc-08",
     category: "과학",
-    question: "적혈구 속에서 산소를 운반하는, 철을 포함한 단백질은?",
-    choices: ["헤모글로빈", "인슐린", "케라틴", "콜라겐"],
+    question: "원자 번호가 1번인 원소는?",
+    choices: ["수소", "헬륨", "리튬", "탄소"],
     answer: 0,
-    explanation: "헤모글로빈은 적혈구 속 단백질로, 산소를 몸 곳곳의 조직으로 운반한다.",
-    source: "MedlinePlus(미국 국립의학도서관) 'Hemoglobin'",
-    sourceUrl: "https://medlineplus.gov/ency/article/003645.htm"
+    explanation: "수소는 원자핵에 양성자가 하나뿐인, 가장 단순한 원소다.",
+    source: "영국 왕립화학회(RSC) 주기율표 'Hydrogen'",
+    sourceUrl: "https://periodic-table.rsc.org/element/1/hydrogen"
   },
   {
     id: "sc-09",
@@ -302,12 +302,12 @@ const QUESTIONS = [
   {
     id: "ac-01",
     category: "예술과 문화",
-    question: "파리 루브르 박물관에 있는 「모나리자」를 그린 화가는?",
-    choices: ["레오나르도 다빈치", "미켈란젤로 부오나로티", "라파엘로 산치오", "산드로 보티첼리"],
+    question: "파리의 여인 비올레타가 주인공인 오페라 「라 트라비아타」의 작곡가는?",
+    choices: ["베르디", "푸치니", "로시니", "바그너"],
     answer: 0,
-    explanation: "레오나르도 다빈치가 포플러 나무판에 그린 「모나리자」는 루브르 박물관에 걸려 있다.",
-    source: "루브르 박물관 'From the Mona Lisa to The Wedding Feast at Cana'",
-    sourceUrl: "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana"
+    explanation: "「라 트라비아타」는 베르디가 작곡한 오페라로, 비올레타와 알프레도의 사랑을 그린다.",
+    source: "Encyclopaedia Britannica 'La traviata'",
+    sourceUrl: "https://www.britannica.com/topic/La-traviata"
   },
   {
     id: "ac-02",
@@ -332,12 +332,12 @@ const QUESTIONS = [
   {
     id: "ac-04",
     category: "예술과 문화",
-    question: "덴마크 왕자가 아버지를 죽인 숙부에게 복수하려는 비극 「햄릿」의 작가는?",
-    choices: ["셰익스피어", "크리스토퍼 말로", "존 밀턴", "벤 존슨"],
+    question: "「지옥의 문」 꼭대기에 놓을 인물로 처음 구상된 조각 「생각하는 사람」의 작가는?",
+    choices: ["로댕", "마욜", "부르델", "클로델"],
     answer: 0,
-    explanation: "셰익스피어의 비극으로, 햄릿이 아버지를 죽인 숙부 클로디어스에게 복수하려 한다.",
-    source: "폴저 셰익스피어 도서관 'Hamlet'",
-    sourceUrl: "https://www.folger.edu/explore/shakespeares-works/hamlet/"
+    explanation: "로댕이 1880년 주문받은 「지옥의 문」 작업에서 나온 대표 조각이다.",
+    source: "로댕 미술관 'The Thinker'",
+    sourceUrl: "https://www.musee-rodin.fr/en/musee/collections/oeuvres/thinker"
   },
   {
     id: "ac-05",
@@ -392,11 +392,11 @@ const QUESTIONS = [
   {
     id: "ac-10",
     category: "예술과 문화",
-    question: "조선 왕실 사당인 종묘의 제사 때 악기·노래·춤으로 행하며, 2001년 유네스코 무형유산이 된 것은?",
-    choices: ["종묘제례악", "문묘제례악", "궁중연례악", "대취타"],
+    question: "춘향과 이 도령이 광한루에서 처음 만나는 「춘향전」의 배경 고을은?",
+    choices: ["남원", "전주", "진주", "나주"],
     answer: 0,
-    explanation: "종묘제례악은 종묘제례와 함께 2001년 유네스코 인류무형유산으로 등재되었다.",
-    source: "국가유산청 궁능유적본부 '무형문화유산 종묘'",
-    sourceUrl: "https://royal.khs.go.kr/ROYAL/contents/R105040000.do"
+    explanation: "「춘향전」은 남원을 배경으로 춘향과 남원 부사의 아들 이 도령의 사랑을 그린다.",
+    source: "한국민족문화대백과사전 '춘향전'",
+    sourceUrl: "https://encykorea.aks.ac.kr/Article/E0058064"
   }
 ];
