@@ -188,6 +188,11 @@ test("pickHintRemovals: 항상 오답 2개", () => {
     }
   }
 });
+test("prepareQuestion: 두 번 적용해도 정답 보기가 같음", () => {
+  const q = { id: "x", choices: ["A", "B", "C", "D"], answer: 2 };
+  const p = prepareQuestion(prepareQuestion(q), Math.random);
+  assertEqual(p.choices[p.answer], "C");
+});
 
 // ===== 화면 =====
 const state = {
@@ -352,12 +357,25 @@ function useHint() {
   $("hint-button").disabled = true;
 }
 
+function startRetry() {
+  state.questions = shuffle(state.wrong).map(q => prepareQuestion(q));
+  state.wrong = [];
+  state.index = 0;
+  state.score = 0;
+  state.isRetry = true;
+  showScreen("quiz");
+  renderQuestion();
+}
+
 function renderResult() {
   const mode = MODES[state.mode];
-  state.firstScore = state.score;
+  if (!state.isRetry) state.firstScore = state.score;
   $("result-label").textContent = `${state.category} · ${mode.label}`;
   $("result-score").textContent = `${formatScore(state.firstScore)} / ${QUESTIONS_PER_ROUND}`;
   $("result-notice").hidden = mode.ranked;
+  $("retry-summary").hidden = !state.isRetry;
+  $("retry-summary").textContent = `다시 푼 결과 ${formatScore(state.score)} / ${state.questions.length}`;
+  $("retry-button").hidden = !(mode.retry && state.wrong.length > 0);
   showScreen("result");
 }
 
@@ -368,6 +386,7 @@ function init() {
   brokenCategories = new Set(errors.map(e => e.category));
   $("next-button").addEventListener("click", nextQuestion);
   $("hint-button").addEventListener("click", useHint);
+  $("retry-button").addEventListener("click", startRetry);
   $("again-button").addEventListener("click", () => startGame(state.mode, state.category));
   $("home-button").addEventListener("click", renderStart);
   renderStart();
