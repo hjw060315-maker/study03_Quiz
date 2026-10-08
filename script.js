@@ -174,5 +174,126 @@ test("MODES: 모드별 규칙", () => {
 });
 
 // ===== 화면 =====
+const state = {
+  mode: "practice",
+  category: null,
+  questions: [],
+  index: 0,
+  score: 0,
+  firstScore: 0,
+  wrong: [],
+  isRetry: false,
+  hintUsed: false,
+  timerId: null,
+  timeLeft: 0
+};
+let brokenCategories = new Set();
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function showScreen(name) {
+  for (const section of document.querySelectorAll(".screen")) {
+    section.hidden = section.id !== "screen-" + name;
+  }
+}
+
+function renderStart() {
+  const box = $("category-buttons");
+  box.innerHTML = "";
+  for (const c of CATEGORIES) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = c;
+    btn.disabled = brokenCategories.has(c);
+    btn.addEventListener("click", () => startGame(state.mode, c));
+    box.appendChild(btn);
+  }
+  showScreen("start");
+}
+
+function startGame(mode, category) {
+  state.mode = mode;
+  state.category = category;
+  state.questions = buildRound(QUESTIONS, category);
+  state.index = 0;
+  state.score = 0;
+  state.wrong = [];
+  state.isRetry = false;
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = state.questions[state.index];
+  const mode = MODES[state.mode];
+  state.hintUsed = false;
+  $("quiz-label").textContent = `${state.category} · ${mode.label}${state.isRetry ? " · 다시 풀기" : ""}`;
+  $("quiz-progress").textContent = `${state.index + 1} / ${state.questions.length}`;
+  $("quiz-score").textContent = `점수 ${formatScore(state.score)}`;
+  $("quiz-question").textContent = q.question;
+  const box = $("quiz-choices");
+  box.innerHTML = "";
+  q.choices.forEach((text, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "choice";
+    btn.textContent = `${i + 1}. ${text}`;
+    btn.addEventListener("click", () => selectAnswer(i));
+    box.appendChild(btn);
+  });
+  $("quiz-feedback").hidden = true;
+}
+
+function selectAnswer(i) {
+  const q = state.questions[state.index];
+  const correct = i === q.answer;
+  state.score += scoreFor(correct, state.hintUsed);
+  if (!correct) state.wrong.push(q);
+  for (const [j, btn] of document.querySelectorAll("#quiz-choices .choice").entries()) {
+    btn.disabled = true;
+    if (j === q.answer) btn.classList.add("correct");
+    else if (j === i) btn.classList.add("wrong");
+  }
+  $("quiz-score").textContent = `점수 ${formatScore(state.score)}`;
+  const result = $("feedback-result");
+  result.textContent = correct ? "정답!" : "오답";
+  result.className = "feedback-result " + (correct ? "is-correct" : "is-wrong");
+  $("feedback-explanation").textContent = `정답: ${q.choices[q.answer]} — ${q.explanation}`;
+  $("feedback-source").textContent = q.source;
+  $("feedback-source").href = q.sourceUrl;
+  $("next-button").textContent = state.index === state.questions.length - 1 ? "결과 보기" : "다음";
+  $("quiz-feedback").hidden = false;
+}
+
+function nextQuestion() {
+  if (state.index < state.questions.length - 1) {
+    state.index++;
+    renderQuestion();
+  } else {
+    renderResult();
+  }
+}
+
+function renderResult() {
+  const mode = MODES[state.mode];
+  state.firstScore = state.score;
+  $("result-label").textContent = `${state.category} · ${mode.label}`;
+  $("result-score").textContent = `${formatScore(state.firstScore)} / ${QUESTIONS_PER_ROUND}`;
+  $("result-notice").hidden = mode.ranked;
+  showScreen("result");
+}
 
 // ===== 시작 =====
+function init() {
+  const errors = validateQuestions(QUESTIONS);
+  for (const e of errors) console.error(`문항 오류 [${e.category}] ${e.id}: ${e.reason}`);
+  brokenCategories = new Set(errors.map(e => e.category));
+  $("next-button").addEventListener("click", nextQuestion);
+  $("again-button").addEventListener("click", () => startGame(state.mode, state.category));
+  $("home-button").addEventListener("click", renderStart);
+  renderStart();
+}
+
+if (typeof document !== "undefined") init();
