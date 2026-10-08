@@ -22,7 +22,7 @@ const QUESTIONS = [
   {
     id: "kh-03",
     category: "한국사",
-    question: "신라 선덕여왕 때 쌓은 것으로 전하는, 경주에 있는 천문 관측 시설은?",
+    question: "신라 선덕여왕 때 쌓은 것으로 전하며, 천문 관측 시설로 알려진 경주의 유적은?",
     choices: ["첨성대", "관천대", "간의대", "흠경각"],
     answer: 0,
     explanation: "『삼국유사』에 선덕여왕 때 돌을 다듬어 첨성대를 쌓았다는 기록이 있다.",
@@ -122,7 +122,7 @@ const QUESTIONS = [
   {
     id: "wg-03",
     category: "세계지리",
-    question: "요르단과 이스라엘 사이에 있는, 바다처럼 짠 소금 호수는?",
+    question: "요르단과 이스라엘 사이에 있는, 물이 매우 짠 소금 호수는?",
     choices: ["사해", "홍해", "흑해", "황해"],
     answer: 0,
     explanation: "사해는 이스라엘과 요르단 사이의 움푹 꺼진 낮은 땅에 있는 소금 호수다.",
@@ -173,7 +173,7 @@ const QUESTIONS = [
     id: "wg-08",
     category: "세계지리",
     question: "빙하가 깎아 만든 골짜기에 바닷물이 들어와 생긴 좁고 긴 만은?",
-    choices: ["피오르", "리아스", "석호", "사주"],
+    choices: ["피오르", "리아스", "석호", "삼각강"],
     answer: 0,
     explanation: "피오르는 빙하가 깎은 골짜기에 바다가 들어온 지형으로, 노르웨이에 많다.",
     source: "Encyclopaedia Britannica 'fjord'",
@@ -332,7 +332,7 @@ const QUESTIONS = [
   {
     id: "ac-04",
     category: "예술과 문화",
-    question: "「지옥의 문」 꼭대기에 놓을 인물로 처음 구상된 조각 「생각하는 사람」의 작가는?",
+    question: "「지옥의 문」 윗부분에 앉힐 인물로 처음 구상된 조각 「생각하는 사람」의 작가는?",
     choices: ["로댕", "마욜", "부르델", "클로델"],
     answer: 0,
     explanation: "로댕이 1880년 주문받은 「지옥의 문」 작업에서 나온 대표 조각이다.",
