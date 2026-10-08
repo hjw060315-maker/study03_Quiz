@@ -198,5 +198,105 @@ const QUESTIONS = [
     explanation: "마추픽추는 페루의 안데스산맥에 남아 있는 잉카 제국의 대표 유적이다.",
     source: "UNESCO World Heritage Centre 'Historic Sanctuary of Machu Picchu'",
     sourceUrl: "https://whc.unesco.org/en/list/274/"
+  },
+  {
+    id: "sc-01",
+    category: "과학",
+    question: "식물 세포에서 광합성이 일어나는 세포 소기관은?",
+    choices: ["엽록체", "미토콘드리아", "리보솜", "골지체"],
+    answer: 0,
+    explanation: "엽록체는 빛에너지를 화학 에너지로 바꾸는 광합성이 일어나는 곳이다.",
+    source: "Encyclopaedia Britannica 'chloroplast'",
+    sourceUrl: "https://www.britannica.com/science/chloroplast"
+  },
+  {
+    id: "sc-02",
+    category: "과학",
+    question: "건조한 공기의 부피 기준으로 지구 대기에서 가장 많은 기체는?",
+    choices: ["질소", "산소", "아르곤", "헬륨"],
+    answer: 0,
+    explanation: "지구 대기는 부피로 질소가 약 78%, 산소가 약 21%를 차지한다.",
+    source: "NASA Earth Fact Sheet",
+    sourceUrl: "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+  },
+  {
+    id: "sc-03",
+    category: "과학",
+    question: "'붉은 행성'이라고도 불리는, 태양에서 네 번째로 가까운 행성은?",
+    choices: ["화성", "금성", "목성", "수성"],
+    answer: 0,
+    explanation: "화성은 태양에서 네 번째 행성으로, 밤하늘에서 붉게 보여 '붉은 행성'이라 불린다.",
+    source: "Encyclopaedia Britannica 'Mars'",
+    sourceUrl: "https://www.britannica.com/place/Mars-planet"
+  },
+  {
+    id: "sc-04",
+    category: "과학",
+    question: "태양계 행성 가운데 태양에 가장 가까운 궤도를 도는 행성은?",
+    choices: ["수성", "금성", "화성", "지구"],
+    answer: 0,
+    explanation: "수성은 태양계에서 가장 안쪽을 도는 행성이며, 크기도 가장 작다.",
+    source: "NASA Science 'Mercury Facts'",
+    sourceUrl: "https://science.nasa.gov/mercury/facts/"
+  },
+  {
+    id: "sc-05",
+    category: "과학",
+    question: "원소를 원자량 순으로 늘어놓아 주기율표를 만들고, 발견되지 않은 원소를 예측한 러시아 화학자는?",
+    choices: ["멘델레예프", "아보가드로", "베르셀리우스", "라부아지에"],
+    answer: 0,
+    explanation: "멘델레예프는 주기율표에 빈칸을 남기고 그 자리에 들어갈 원소의 성질을 예측했다.",
+    source: "Encyclopaedia Britannica 'Dmitri Mendeleev'",
+    sourceUrl: "https://www.britannica.com/biography/Dmitri-Mendeleev"
+  },
+  {
+    id: "sc-06",
+    category: "과학",
+    question: "1928년 세균 배양 접시에 핀 곰팡이에서 페니실린을 발견한 과학자는?",
+    choices: ["플레밍", "파스퇴르", "코흐", "제너"],
+    answer: 0,
+    explanation: "플레밍은 1928년 페니실린을 발견해 1945년 노벨 생리의학상을 받았다.",
+    source: "노벨상 공식 사이트 'Sir Alexander Fleming – Facts'",
+    sourceUrl: "https://www.nobelprize.org/prizes/medicine/1945/fleming/facts/"
+  },
+  {
+    id: "sc-07",
+    category: "과학",
+    question: "DNA의 이중 나선 구조 모형을 제안한 두 과학자는?",
+    choices: ["왓슨과 크릭", "멘델과 모건", "퀴리와 보어", "파스퇴르와 코흐"],
+    answer: 0,
+    explanation: "왓슨과 크릭은 핵산의 분자 구조를 밝힌 공로로 노벨 생리의학상을 받았다.",
+    source: "노벨상 공식 사이트 'The Nobel Prize in Physiology or Medicine 1962'",
+    sourceUrl: "https://www.nobelprize.org/prizes/medicine/1962/summary/"
+  },
+  {
+    id: "sc-08",
+    category: "과학",
+    question: "적혈구 속에서 산소를 운반하는, 철을 포함한 단백질은?",
+    choices: ["헤모글로빈", "인슐린", "케라틴", "콜라겐"],
+    answer: 0,
+    explanation: "헤모글로빈은 적혈구 속 단백질로, 산소를 몸 곳곳의 조직으로 운반한다.",
+    source: "MedlinePlus(미국 국립의학도서관) 'Hemoglobin'",
+    sourceUrl: "https://medlineplus.gov/ency/article/003645.htm"
+  },
+  {
+    id: "sc-09",
+    category: "과학",
+    question: "뉴턴의 운동 제2법칙에서 힘은 질량과 무엇의 곱인가?",
+    choices: ["가속도", "속도", "운동량", "변위"],
+    answer: 0,
+    explanation: "질량이 일정할 때 물체에 작용하는 힘은 질량과 가속도의 곱(F = ma)이다.",
+    source: "NASA Glenn Research Center 'Newton's Laws of Motion'",
+    sourceUrl: "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/newtons-laws-of-motion/"
+  },
+  {
+    id: "sc-10",
+    category: "과학",
+    question: "지구의 대륙들이 오랜 시간에 걸쳐 움직였다는 대륙 이동설을 처음 체계적으로 내놓은 과학자는?",
+    choices: ["베게너", "허턴", "라이엘", "다윈"],
+    answer: 0,
+    explanation: "독일의 기상학자 베게너가 대륙 이동설을 처음으로 완전한 형태로 제시했다.",
+    source: "Encyclopaedia Britannica 'Alfred Wegener'",
+    sourceUrl: "https://www.britannica.com/biography/Alfred-Wegener"
   }
 ];
