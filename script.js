@@ -67,6 +67,11 @@ function scoreFor(correct, hintUsed) {
   return hintUsed ? 0.5 : 1;
 }
 
+function pickHintRemovals(answer, rand = Math.random) {
+  const wrong = [0, 1, 2, 3].filter(i => i !== answer);
+  return shuffle(wrong, rand).slice(0, 2).sort((a, b) => a - b);
+}
+
 // ===== 순위표 =====
 
 // ===== 자체 점검 =====
@@ -172,6 +177,17 @@ test("MODES: 모드별 규칙", () => {
   assertEqual([MODES.speed.timeLimit, MODES.speed.hint, MODES.speed.ranked, MODES.speed.retry], [15, false, true, false]);
   assertEqual([MODES.hint.timeLimit, MODES.hint.hint, MODES.hint.ranked, MODES.hint.retry], [0, true, true, false]);
 });
+test("pickHintRemovals: rand가 0이면 정해진 2개", () => assertEqual(pickHintRemovals(2, zero), [1, 3]));
+test("pickHintRemovals: 항상 오답 2개", () => {
+  for (let answer = 0; answer < 4; answer++) {
+    for (let k = 0; k < 20; k++) {
+      const r = pickHintRemovals(answer);
+      assertEqual(r.length, 2, "개수");
+      assertEqual(r.includes(answer), false, "정답 제외");
+      assertEqual(r[0] !== r[1], true, "서로 다름");
+    }
+  }
+});
 
 // ===== 화면 =====
 const state = {
@@ -262,12 +278,15 @@ function renderQuestion() {
     box.appendChild(btn);
   });
   $("quiz-feedback").hidden = true;
+  $("hint-button").hidden = !mode.hint;
+  $("hint-button").disabled = false;
   $("timer").hidden = mode.timeLimit === 0;
   if (mode.timeLimit > 0) startTimer();
 }
 
 function selectAnswer(i) {
   stopTimer();
+  $("hint-button").disabled = true;
   const q = state.questions[state.index];
   const correct = i === q.answer;
   state.score += scoreFor(correct, state.hintUsed);
@@ -322,6 +341,17 @@ function onTimeout() {
   selectAnswer(-1);
 }
 
+function useHint() {
+  const q = state.questions[state.index];
+  state.hintUsed = true;
+  const buttons = document.querySelectorAll("#quiz-choices .choice");
+  for (const i of pickHintRemovals(q.answer)) {
+    buttons[i].disabled = true;
+    buttons[i].classList.add("removed");
+  }
+  $("hint-button").disabled = true;
+}
+
 function renderResult() {
   const mode = MODES[state.mode];
   state.firstScore = state.score;
@@ -337,6 +367,7 @@ function init() {
   for (const e of errors) console.error(`문항 오류 [${e.category}] ${e.id}: ${e.reason}`);
   brokenCategories = new Set(errors.map(e => e.category));
   $("next-button").addEventListener("click", nextQuestion);
+  $("hint-button").addEventListener("click", useHint);
   $("again-button").addEventListener("click", () => startGame(state.mode, state.category));
   $("home-button").addEventListener("click", renderStart);
   renderStart();
