@@ -305,7 +305,7 @@ const QUESTIONS = [
     question: "파리 루브르 박물관에 있는 「모나리자」를 그린 화가는?",
     choices: ["레오나르도 다빈치", "미켈란젤로 부오나로티", "라파엘로 산치오", "산드로 보티첼리"],
     answer: 0,
-    explanation: "레오나르도 다빈치가 그린 「모나리자」는 루브르 박물관 '국가의 방'에 걸려 있다.",
+    explanation: "레오나르도 다빈치가 포플러 나무판에 그린 「모나리자」는 루브르 박물관에 걸려 있다.",
     source: "루브르 박물관 'From the Mona Lisa to The Wedding Feast at Cana'",
     sourceUrl: "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana"
   },
@@ -315,7 +315,7 @@ const QUESTIONS = [
     question: "소용돌이치는 밤하늘을 그린 「별이 빛나는 밤」(1889)의 화가는?",
     choices: ["반 고흐", "고갱", "세잔", "모네"],
     answer: 0,
-    explanation: "네덜란드 화가 반 고흐가 1889년에 그린 그림으로, 지금 뉴욕 현대미술관(MoMA)에 있다.",
+    explanation: "네덜란드 화가 반 고흐가 1889년에 그렸으며, 마을 위로 달과 별이 빛나는 밤하늘을 담았다.",
     source: "뉴욕 현대미술관(MoMA) 'The Starry Night'",
     sourceUrl: "https://www.moma.org/collection/works/79802"
   },
