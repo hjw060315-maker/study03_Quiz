@@ -262,9 +262,12 @@ function renderQuestion() {
     box.appendChild(btn);
   });
   $("quiz-feedback").hidden = true;
+  $("timer").hidden = mode.timeLimit === 0;
+  if (mode.timeLimit > 0) startTimer();
 }
 
 function selectAnswer(i) {
+  stopTimer();
   const q = state.questions[state.index];
   const correct = i === q.answer;
   state.score += scoreFor(correct, state.hintUsed);
@@ -276,7 +279,7 @@ function selectAnswer(i) {
   }
   $("quiz-score").textContent = `점수 ${formatScore(state.score)}`;
   const result = $("feedback-result");
-  result.textContent = correct ? "정답!" : "오답";
+  result.textContent = correct ? "정답!" : (i === -1 ? "시간 초과 · 오답" : "오답");
   result.className = "feedback-result " + (correct ? "is-correct" : "is-wrong");
   $("feedback-explanation").textContent = `정답: ${q.choices[q.answer]} — ${q.explanation}`;
   $("feedback-source").textContent = q.source;
@@ -292,6 +295,31 @@ function nextQuestion() {
   } else {
     renderResult();
   }
+}
+
+function startTimer() {
+  stopTimer();
+  state.timeLeft = MODES[state.mode].timeLimit;
+  updateTimer();
+  state.timerId = setInterval(() => {
+    state.timeLeft--;
+    updateTimer();
+    if (state.timeLeft <= 0) onTimeout();
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(state.timerId);
+  state.timerId = null;
+}
+
+function updateTimer() {
+  $("timer-text").textContent = `${state.timeLeft}초`;
+  $("timer-fill").style.width = `${(state.timeLeft / MODES[state.mode].timeLimit) * 100}%`;
+}
+
+function onTimeout() {
+  selectAnswer(-1);
 }
 
 function renderResult() {
