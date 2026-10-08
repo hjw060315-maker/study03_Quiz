@@ -2,6 +2,12 @@
 const CATEGORIES = ["한국사", "세계지리", "과학", "예술과 문화"];
 const QUESTIONS_PER_ROUND = 10;
 
+const MODES = {
+  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true },
+  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false },
+  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false }
+};
+
 // ===== 순수 함수 =====
 function shuffle(array, rand = Math.random) {
   const result = array.slice();
@@ -54,6 +60,11 @@ function reportQuestions() {
   for (const e of errors) console.log(`[${e.category}] ${e.id}: ${e.reason}`);
   console.log(`문항 ${QUESTIONS.length}개, 오류 ${errors.length}건`);
   return errors.length;
+}
+
+function scoreFor(correct, hintUsed) {
+  if (!correct) return 0;
+  return hintUsed ? 0.5 : 1;
 }
 
 // ===== 순위표 =====
@@ -150,6 +161,17 @@ test("validateQuestions: 카테고리 문항 수", () => {
   assertEqual(validateQuestions(all), [{ id: "-", category: "한국사", reason: "문항 수 9개(10개여야 함)" }]);
 });
 test("문항 데이터: 오류 0건", () => assertEqual(validateQuestions(QUESTIONS), []));
+test("scoreFor: 정답 1점, 힌트 정답 0.5점, 오답 0점", () => {
+  assertEqual(scoreFor(true, false), 1);
+  assertEqual(scoreFor(true, true), 0.5);
+  assertEqual(scoreFor(false, false), 0);
+  assertEqual(scoreFor(false, true), 0);
+});
+test("MODES: 모드별 규칙", () => {
+  assertEqual([MODES.practice.timeLimit, MODES.practice.hint, MODES.practice.ranked, MODES.practice.retry], [0, false, false, true]);
+  assertEqual([MODES.speed.timeLimit, MODES.speed.hint, MODES.speed.ranked, MODES.speed.retry], [15, false, true, false]);
+  assertEqual([MODES.hint.timeLimit, MODES.hint.hint, MODES.hint.ranked, MODES.hint.retry], [0, true, true, false]);
+});
 
 // ===== 화면 =====
 
