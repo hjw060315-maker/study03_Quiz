@@ -98,5 +98,105 @@ const QUESTIONS = [
     explanation: "임시정부는 1919년 상하이에서 수립되었고, 1940년 충칭으로 옮겼다.",
     source: "한국민족문화대백과사전 '대한민국 임시정부'",
     sourceUrl: "https://encykorea.aks.ac.kr/Article/E0015017"
+  },
+  {
+    id: "wg-01",
+    category: "세계지리",
+    question: "오스트레일리아의 수도는?",
+    choices: ["캔버라", "시드니", "멜버른", "퍼스"],
+    answer: 0,
+    explanation: "시드니와 멜버른이 서로 경쟁해, 두 도시가 아닌 캔버라가 수도로 정해졌다.",
+    source: "National Capital Authority(호주 국가수도청)",
+    sourceUrl: "https://www.nca.gov.au/education/canberras-history/canberra-seat-government"
+  },
+  {
+    id: "wg-02",
+    category: "세계지리",
+    question: "이집트의 수에즈 운하가 연결하는 두 바다는?",
+    choices: ["지중해와 홍해", "지중해와 흑해", "홍해와 아라비아해", "흑해와 카스피해"],
+    answer: 0,
+    explanation: "수에즈 운하는 지중해와 홍해를 이어, 배가 아프리카를 돌아가지 않게 해 준다.",
+    source: "Encyclopaedia Britannica 'Suez Canal'",
+    sourceUrl: "https://www.britannica.com/topic/Suez-Canal"
+  },
+  {
+    id: "wg-03",
+    category: "세계지리",
+    question: "경도 0°인 본초 자오선이 지나는 영국 런던의 지역은?",
+    choices: ["그리니치", "웨스트민스터", "캠던", "첼시"],
+    answer: 0,
+    explanation: "1884년 국제 회의에서 그리니치 천문대를 지나는 경선을 본초 자오선으로 정했다.",
+    source: "National Geographic Education 'Prime Meridian'",
+    sourceUrl: "https://education.nationalgeographic.org/resource/prime-meridian/"
+  },
+  {
+    id: "wg-04",
+    category: "세계지리",
+    question: "대체로 경도 180°선을 따라 그어, 넘어가면 날짜가 바뀌는 선은?",
+    choices: ["날짜 변경선", "본초 자오선", "북회귀선", "남회귀선"],
+    answer: 0,
+    explanation: "날짜 변경선의 서쪽 지역은 동쪽 지역보다 날짜가 하루 앞선다.",
+    source: "National Geographic Education 'Date Line'",
+    sourceUrl: "https://education.nationalgeographic.org/resource/date-line/"
+  },
+  {
+    id: "wg-05",
+    category: "세계지리",
+    question: "남아메리카의 아마존강이 흘러드는 바다는?",
+    choices: ["대서양", "태평양", "카리브해", "인도양"],
+    answer: 0,
+    explanation: "아마존강은 안데스산맥에서 시작해 브라질 북동부 해안에서 대서양으로 흘러든다.",
+    source: "Encyclopaedia Britannica 'Amazon River'",
+    sourceUrl: "https://www.britannica.com/place/Amazon-River"
+  },
+  {
+    id: "wg-06",
+    category: "세계지리",
+    question: "남아메리카 서쪽을 따라 남북으로 길게 뻗은 산맥은?",
+    choices: ["안데스산맥", "로키산맥", "알프스산맥", "우랄산맥"],
+    answer: 0,
+    explanation: "안데스산맥은 남아메리카 남쪽 끝에서 북쪽 해안까지 이어진다.",
+    source: "National Geographic Education 'South America: Physical Geography'",
+    sourceUrl: "https://education.nationalgeographic.org/resource/south-america-physical-geography/"
+  },
+  {
+    id: "wg-07",
+    category: "세계지리",
+    question: "해발 고도 기준으로 세계에서 가장 높은 산인 에베레스트산이 국경에 걸쳐 있는 두 나라는?",
+    choices: ["네팔과 중국", "네팔과 인도", "인도와 중국", "부탄과 중국"],
+    answer: 0,
+    explanation: "에베레스트산은 히말라야산맥에 있으며 네팔과 중국(티베트) 국경에 걸쳐 있다.",
+    source: "Encyclopaedia Britannica 'Mount Everest'",
+    sourceUrl: "https://www.britannica.com/place/Mount-Everest"
+  },
+  {
+    id: "wg-08",
+    category: "세계지리",
+    question: "빙하가 깎아 만든 골짜기에 바닷물이 들어와 생긴 좁고 긴 만은?",
+    choices: ["피오르", "리아스", "석호", "사주"],
+    answer: 0,
+    explanation: "피오르는 빙하가 깎은 골짜기에 바다가 들어온 지형으로, 노르웨이에 많다.",
+    source: "Encyclopaedia Britannica 'fjord'",
+    sourceUrl: "https://www.britannica.com/science/fjord"
+  },
+  {
+    id: "wg-09",
+    category: "세계지리",
+    question: "해발 고도 기준으로 아프리카에서 가장 높은 산인 킬리만자로산이 있는 나라는?",
+    choices: ["탄자니아", "케냐", "에티오피아", "우간다"],
+    answer: 0,
+    explanation: "킬리만자로산은 탄자니아 북동부, 케냐 국경 가까이에 있는 화산이다.",
+    source: "Encyclopaedia Britannica 'Kilimanjaro'",
+    sourceUrl: "https://www.britannica.com/place/Kilimanjaro"
+  },
+  {
+    id: "wg-10",
+    category: "세계지리",
+    question: "안데스산맥에 남아 있는 잉카 제국의 유적 마추픽추가 있는 나라는?",
+    choices: ["페루", "볼리비아", "칠레", "에콰도르"],
+    answer: 0,
+    explanation: "마추픽추는 페루의 안데스산맥에 남아 있는 잉카 제국의 대표 유적이다.",
+    source: "UNESCO World Heritage Centre 'Historic Sanctuary of Machu Picchu'",
+    sourceUrl: "https://whc.unesco.org/en/list/274/"
   }
 ];
