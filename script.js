@@ -3,10 +3,14 @@ const CATEGORIES = ["한국사", "세계지리", "과학", "예술과 문화"];
 const QUESTIONS_PER_ROUND = 10;
 
 const MODES = {
-  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true },
-  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false },
-  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false }
+  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true,
+    rule: "시간 제한과 힌트 없음, 맞히면 1점, 틀린 문제 다시 풀기" },
+  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false,
+    rule: "문항마다 15초, 시간이 지나면 오답" },
+  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false,
+    rule: "문항마다 힌트 1번(오답 2개 지우기), 힌트를 쓰고 맞히면 0.5점" }
 };
+const URGENT_SECONDS = 5;
 
 // ===== 순수 함수 =====
 function shuffle(array, rand = Math.random) {
@@ -65,6 +69,10 @@ function reportQuestions() {
 function scoreFor(correct, hintUsed) {
   if (!correct) return 0;
   return hintUsed ? 0.5 : 1;
+}
+
+function isUrgent(timeLeft) {
+  return timeLeft <= URGENT_SECONDS;
 }
 
 function pickHintRemovals(answer, rand = Math.random) {
@@ -177,6 +185,12 @@ test("MODES: 모드별 규칙", () => {
   assertEqual([MODES.speed.timeLimit, MODES.speed.hint, MODES.speed.ranked, MODES.speed.retry], [15, false, true, false]);
   assertEqual([MODES.hint.timeLimit, MODES.hint.hint, MODES.hint.ranked, MODES.hint.retry], [0, true, true, false]);
 });
+test("MODES: 모드마다 한 줄 규칙 설명이 있음", () => {
+  for (const m of Object.values(MODES)) assertEqual(typeof m.rule === "string" && m.rule.length > 0, true, m.label);
+});
+test("isUrgent: 5초 이하에서만 경고", () => {
+  assertEqual([15, 6, 5, 1, 0].map(isUrgent), [false, false, true, true, true]);
+});
 test("pickHintRemovals: rand가 0이면 정해진 2개", () => assertEqual(pickHintRemovals(2, zero), [1, 3]));
 test("pickHintRemovals: 항상 오답 2개", () => {
   for (let answer = 0; answer < 4; answer++) {
@@ -220,25 +234,7 @@ function showScreen(name) {
   }
 }
 
-function renderOptionButtons(containerId, options, selected, onPick) {
-  const box = $(containerId);
-  box.innerHTML = "";
-  for (const [value, label] of options) {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = label;
-    btn.classList.toggle("selected", value === selected);
-    btn.addEventListener("click", () => onPick(value));
-    box.appendChild(btn);
-  }
-}
-
 function renderStart() {
-  renderOptionButtons("mode-buttons", Object.entries(MODES).map(([k, m]) => [k, m.label]), state.mode, mode => {
-    state.mode = mode;
-    renderStart();
-  });
-  $("start-notice").hidden = MODES[state.mode].ranked;
   const box = $("category-buttons");
   box.innerHTML = "";
   for (const c of CATEGORIES) {
@@ -246,10 +242,33 @@ function renderStart() {
     btn.type = "button";
     btn.textContent = c;
     btn.disabled = brokenCategories.has(c);
-    btn.addEventListener("click", () => startGame(state.mode, c));
+    btn.addEventListener("click", () => renderModeSelect(c));
     box.appendChild(btn);
   }
   showScreen("start");
+}
+
+function renderModeSelect(category) {
+  state.category = category;
+  $("mode-title").textContent = `${category} · 모드를 고르세요`;
+  const box = $("mode-list");
+  box.innerHTML = "";
+  for (const [key, mode] of Object.entries(MODES)) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "mode-option";
+    const parts = [["mode-name", mode.label], ["mode-rule", mode.rule]];
+    if (!mode.ranked) parts.push(["mode-notice", "순위표에 기록되지 않음"]);
+    for (const [cls, text] of parts) {
+      const span = document.createElement("span");
+      span.className = cls;
+      span.textContent = text;
+      btn.appendChild(span);
+    }
+    btn.addEventListener("click", () => startGame(key, category));
+    box.appendChild(btn);
+  }
+  showScreen("mode");
 }
 
 function startGame(mode, category) {
@@ -339,6 +358,7 @@ function stopTimer() {
 
 function updateTimer() {
   $("timer-text").textContent = `${state.timeLeft}초`;
+  $("timer").classList.toggle("urgent", isUrgent(state.timeLeft));
   $("timer-fill").style.width = `${(state.timeLeft / MODES[state.mode].timeLimit) * 100}%`;
 }
 
@@ -389,6 +409,7 @@ function init() {
   $("retry-button").addEventListener("click", startRetry);
   $("again-button").addEventListener("click", () => startGame(state.mode, state.category));
   $("home-button").addEventListener("click", renderStart);
+  $("mode-back-button").addEventListener("click", renderStart);
   renderStart();
 }
 

@@ -10,11 +10,14 @@
   <main id="app">
     <section id="screen-start" class="screen">
       <h1>상식 퀴즈</h1>
-      <h2>모드</h2>
-      <div id="mode-buttons" class="button-grid"></div>
-      <p id="start-notice" class="notice">순위표에 기록되지 않음</p>
       <h2>카테고리</h2>
       <div id="category-buttons" class="button-grid"></div>
+    </section>
+
+    <section id="screen-mode" class="screen" hidden>
+      <h1 id="mode-title"></h1>
+      <div id="mode-list" class="mode-list"></div>
+      <button id="mode-back-button" type="button">뒤로</button>
     </section>
 
     <section id="screen-quiz" class="screen" hidden>
