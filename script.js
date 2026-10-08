@@ -149,6 +149,7 @@ test("validateQuestions: 카테고리 문항 수", () => {
   const all = sampleQuestions().slice(1);
   assertEqual(validateQuestions(all), [{ id: "-", category: "한국사", reason: "문항 수 9개(10개여야 함)" }]);
 });
+test("문항 데이터: 오류 0건", () => assertEqual(validateQuestions(QUESTIONS), []));
 
 // ===== 화면 =====
 

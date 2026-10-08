@@ -298,5 +298,105 @@ const QUESTIONS = [
     explanation: "독일의 기상학자 베게너가 대륙 이동설을 처음으로 완전한 형태로 제시했다.",
     source: "Encyclopaedia Britannica 'Alfred Wegener'",
     sourceUrl: "https://www.britannica.com/biography/Alfred-Wegener"
+  },
+  {
+    id: "ac-01",
+    category: "예술과 문화",
+    question: "파리 루브르 박물관에 있는 「모나리자」를 그린 화가는?",
+    choices: ["레오나르도 다빈치", "미켈란젤로 부오나로티", "라파엘로 산치오", "산드로 보티첼리"],
+    answer: 0,
+    explanation: "레오나르도 다빈치가 그린 「모나리자」는 루브르 박물관 '국가의 방'에 걸려 있다.",
+    source: "루브르 박물관 'From the Mona Lisa to The Wedding Feast at Cana'",
+    sourceUrl: "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana"
+  },
+  {
+    id: "ac-02",
+    category: "예술과 문화",
+    question: "소용돌이치는 밤하늘을 그린 「별이 빛나는 밤」(1889)의 화가는?",
+    choices: ["반 고흐", "고갱", "세잔", "모네"],
+    answer: 0,
+    explanation: "네덜란드 화가 반 고흐가 1889년에 그린 그림으로, 지금 뉴욕 현대미술관(MoMA)에 있다.",
+    source: "뉴욕 현대미술관(MoMA) 'The Starry Night'",
+    sourceUrl: "https://www.moma.org/collection/works/79802"
+  },
+  {
+    id: "ac-03",
+    category: "예술과 문화",
+    question: "1937년 스페인 내전 중 폭격당한 도시를 주제로 그린 대형 벽화 「게르니카」의 화가는?",
+    choices: ["피카소", "달리", "미로", "고야"],
+    answer: 0,
+    explanation: "피카소는 1937년 파리 만국 박람회 스페인관에 걸 벽화로 「게르니카」를 그렸다.",
+    source: "레이나 소피아 국립미술관 'Guernica'",
+    sourceUrl: "https://www.museoreinasofia.es/en/collections/artwork/guernica-0/"
+  },
+  {
+    id: "ac-04",
+    category: "예술과 문화",
+    question: "덴마크 왕자가 아버지를 죽인 숙부에게 복수하려는 비극 「햄릿」의 작가는?",
+    choices: ["셰익스피어", "크리스토퍼 말로", "존 밀턴", "벤 존슨"],
+    answer: 0,
+    explanation: "셰익스피어의 비극으로, 햄릿이 아버지를 죽인 숙부 클로디어스에게 복수하려 한다.",
+    source: "폴저 셰익스피어 도서관 'Hamlet'",
+    sourceUrl: "https://www.folger.edu/explore/shakespeares-works/hamlet/"
+  },
+  {
+    id: "ac-05",
+    category: "예술과 문화",
+    question: "마지막 악장에 실러의 시 「환희의 송가」를 합창으로 넣은 교향곡 9번의 작곡가는?",
+    choices: ["베토벤", "모차르트", "하이든", "브람스"],
+    answer: 0,
+    explanation: "베토벤 교향곡 9번의 마지막 악장은 실러의 시 「환희에 부쳐」에 곡을 붙인 합창이다.",
+    source: "베토벤하우스 본(Beethoven-Haus Bonn) 'Symphony no. 9 op. 125'",
+    sourceUrl: "https://www.beethoven.de/en/work/view/5556714292117504/symphony+no.+9+(d+minor)+op.+125"
+  },
+  {
+    id: "ac-06",
+    category: "예술과 문화",
+    question: "아버지의 눈을 뜨게 하려고 공양미 삼백 석에 몸을 판 딸의 이야기를 담은 판소리는?",
+    choices: ["심청가", "춘향가", "흥보가", "수궁가"],
+    answer: 0,
+    explanation: "「심청가」는 판소리 다섯 마당 중 하나로, 인당수에 빠진 심청이 살아나는 이야기다.",
+    source: "한국민족문화대백과사전 '심청가'",
+    sourceUrl: "https://encykorea.aks.ac.kr/Article/E0033942"
+  },
+  {
+    id: "ac-07",
+    category: "예술과 문화",
+    question: "「씨름」과 「서당」이 실린 풍속화첩을 그린 조선 후기 화가는?",
+    choices: ["김홍도", "신윤복", "정선", "김득신"],
+    answer: 0,
+    explanation: "김홍도의 풍속화 25점을 엮은 화첩으로, 국립중앙박물관에 소장되어 있다.",
+    source: "한국민족문화대백과사전 '김홍도 필 풍속도 화첩'",
+    sourceUrl: "https://encykorea.aks.ac.kr/Article/E0013639"
+  },
+  {
+    id: "ac-08",
+    category: "예술과 문화",
+    question: "비가 갠 뒤의 인왕산을 그린 「인왕제색도」의 화가는?",
+    choices: ["정선", "김홍도", "신윤복", "강세황"],
+    answer: 0,
+    explanation: "정선이 76세이던 1751년, 비 온 뒤의 인왕산을 보고 그린 산수화다.",
+    source: "우리역사넷(국사편찬위원회) '정선 필 인왕제색도'",
+    sourceUrl: "https://contents.history.go.kr/mobile/kc/view.do?levelId=kc_r300776&code=kc_age_30"
+  },
+  {
+    id: "ac-09",
+    category: "예술과 문화",
+    question: "가야의 가실왕 때 만들어졌다고 전하는 열두 줄 현악기는?",
+    choices: ["가야금", "거문고", "해금", "아쟁"],
+    answer: 0,
+    explanation: "『삼국사기』에 가실왕이 가야금을 만들고 우륵이 이 악기를 위한 12곡을 지었다고 전한다.",
+    source: "국립국악원 국악사전 '가야금'",
+    sourceUrl: "https://www.gugak.go.kr/ency/topic/view/364"
+  },
+  {
+    id: "ac-10",
+    category: "예술과 문화",
+    question: "조선 왕실 사당인 종묘의 제사 때 악기·노래·춤으로 행하며, 2001년 유네스코 무형유산이 된 것은?",
+    choices: ["종묘제례악", "문묘제례악", "궁중연례악", "대취타"],
+    answer: 0,
+    explanation: "종묘제례악은 종묘제례와 함께 2001년 유네스코 인류무형유산으로 등재되었다.",
+    source: "국가유산청 궁능유적본부 '무형문화유산 종묘'",
+    sourceUrl: "https://royal.khs.go.kr/ROYAL/contents/R105040000.do"
   }
 ];
