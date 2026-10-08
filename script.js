@@ -3,10 +3,14 @@ const CATEGORIES = ["한국사", "세계지리", "과학", "예술과 문화"];
 const QUESTIONS_PER_ROUND = 10;
 
 const MODES = {
-  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true },
-  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false },
-  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false }
+  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true,
+    rule: "시간 제한과 힌트 없음, 맞히면 1점, 틀린 문제 다시 풀기" },
+  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false,
+    rule: "문항마다 15초, 시간이 지나면 오답" },
+  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false,
+    rule: "문항마다 힌트 1번(오답 2개 지우기), 힌트를 쓰고 맞히면 0.5점" }
 };
+const URGENT_SECONDS = 5;
 
 // ===== 순수 함수 =====
 function shuffle(array, rand = Math.random) {
@@ -65,6 +69,15 @@ function reportQuestions() {
 function scoreFor(correct, hintUsed) {
   if (!correct) return 0;
   return hintUsed ? 0.5 : 1;
+}
+
+function isUrgent(timeLeft) {
+  return timeLeft <= URGENT_SECONDS;
+}
+
+function pickHintRemovals(answer, rand = Math.random) {
+  const wrong = [0, 1, 2, 3].filter(i => i !== answer);
+  return shuffle(wrong, rand).slice(0, 2).sort((a, b) => a - b);
 }
 
 // ===== 순위표 =====
@@ -172,6 +185,28 @@ test("MODES: 모드별 규칙", () => {
   assertEqual([MODES.speed.timeLimit, MODES.speed.hint, MODES.speed.ranked, MODES.speed.retry], [15, false, true, false]);
   assertEqual([MODES.hint.timeLimit, MODES.hint.hint, MODES.hint.ranked, MODES.hint.retry], [0, true, true, false]);
 });
+test("MODES: 모드마다 한 줄 규칙 설명이 있음", () => {
+  for (const m of Object.values(MODES)) assertEqual(typeof m.rule === "string" && m.rule.length > 0, true, m.label);
+});
+test("isUrgent: 5초 이하에서만 경고", () => {
+  assertEqual([15, 6, 5, 1, 0].map(isUrgent), [false, false, true, true, true]);
+});
+test("pickHintRemovals: rand가 0이면 정해진 2개", () => assertEqual(pickHintRemovals(2, zero), [1, 3]));
+test("pickHintRemovals: 항상 오답 2개", () => {
+  for (let answer = 0; answer < 4; answer++) {
+    for (let k = 0; k < 20; k++) {
+      const r = pickHintRemovals(answer);
+      assertEqual(r.length, 2, "개수");
+      assertEqual(r.includes(answer), false, "정답 제외");
+      assertEqual(r[0] !== r[1], true, "서로 다름");
+    }
+  }
+});
+test("prepareQuestion: 두 번 적용해도 정답 보기가 같음", () => {
+  const q = { id: "x", choices: ["A", "B", "C", "D"], answer: 2 };
+  const p = prepareQuestion(prepareQuestion(q), Math.random);
+  assertEqual(p.choices[p.answer], "C");
+});
 
 // ===== 화면 =====
 const state = {
@@ -207,10 +242,33 @@ function renderStart() {
     btn.type = "button";
     btn.textContent = c;
     btn.disabled = brokenCategories.has(c);
-    btn.addEventListener("click", () => startGame(state.mode, c));
+    btn.addEventListener("click", () => renderModeSelect(c));
     box.appendChild(btn);
   }
   showScreen("start");
+}
+
+function renderModeSelect(category) {
+  state.category = category;
+  $("mode-title").textContent = `${category} · 모드를 고르세요`;
+  const box = $("mode-list");
+  box.innerHTML = "";
+  for (const [key, mode] of Object.entries(MODES)) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "mode-option";
+    const parts = [["mode-name", mode.label], ["mode-rule", mode.rule]];
+    if (!mode.ranked) parts.push(["mode-notice", "순위표에 기록되지 않음"]);
+    for (const [cls, text] of parts) {
+      const span = document.createElement("span");
+      span.className = cls;
+      span.textContent = text;
+      btn.appendChild(span);
+    }
+    btn.addEventListener("click", () => startGame(key, category));
+    box.appendChild(btn);
+  }
+  showScreen("mode");
 }
 
 function startGame(mode, category) {
@@ -244,9 +302,15 @@ function renderQuestion() {
     box.appendChild(btn);
   });
   $("quiz-feedback").hidden = true;
+  $("hint-button").hidden = !mode.hint;
+  $("hint-button").disabled = false;
+  $("timer").hidden = mode.timeLimit === 0;
+  if (mode.timeLimit > 0) startTimer();
 }
 
 function selectAnswer(i) {
+  stopTimer();
+  $("hint-button").disabled = true;
   const q = state.questions[state.index];
   const correct = i === q.answer;
   state.score += scoreFor(correct, state.hintUsed);
@@ -258,7 +322,7 @@ function selectAnswer(i) {
   }
   $("quiz-score").textContent = `점수 ${formatScore(state.score)}`;
   const result = $("feedback-result");
-  result.textContent = correct ? "정답!" : "오답";
+  result.textContent = correct ? "정답!" : (i === -1 ? "시간 초과 · 오답" : "오답");
   result.className = "feedback-result " + (correct ? "is-correct" : "is-wrong");
   $("feedback-explanation").textContent = `정답: ${q.choices[q.answer]} — ${q.explanation}`;
   $("feedback-source").textContent = q.source;
@@ -276,12 +340,62 @@ function nextQuestion() {
   }
 }
 
+function startTimer() {
+  stopTimer();
+  state.timeLeft = MODES[state.mode].timeLimit;
+  updateTimer();
+  state.timerId = setInterval(() => {
+    state.timeLeft--;
+    updateTimer();
+    if (state.timeLeft <= 0) onTimeout();
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(state.timerId);
+  state.timerId = null;
+}
+
+function updateTimer() {
+  $("timer-text").textContent = `${state.timeLeft}초`;
+  $("timer").classList.toggle("urgent", isUrgent(state.timeLeft));
+  $("timer-fill").style.width = `${(state.timeLeft / MODES[state.mode].timeLimit) * 100}%`;
+}
+
+function onTimeout() {
+  selectAnswer(-1);
+}
+
+function useHint() {
+  const q = state.questions[state.index];
+  state.hintUsed = true;
+  const buttons = document.querySelectorAll("#quiz-choices .choice");
+  for (const i of pickHintRemovals(q.answer)) {
+    buttons[i].disabled = true;
+    buttons[i].classList.add("removed");
+  }
+  $("hint-button").disabled = true;
+}
+
+function startRetry() {
+  state.questions = shuffle(state.wrong).map(q => prepareQuestion(q));
+  state.wrong = [];
+  state.index = 0;
+  state.score = 0;
+  state.isRetry = true;
+  showScreen("quiz");
+  renderQuestion();
+}
+
 function renderResult() {
   const mode = MODES[state.mode];
-  state.firstScore = state.score;
+  if (!state.isRetry) state.firstScore = state.score;
   $("result-label").textContent = `${state.category} · ${mode.label}`;
   $("result-score").textContent = `${formatScore(state.firstScore)} / ${QUESTIONS_PER_ROUND}`;
   $("result-notice").hidden = mode.ranked;
+  $("retry-summary").hidden = !state.isRetry;
+  $("retry-summary").textContent = `다시 푼 결과 ${formatScore(state.score)} / ${state.questions.length}`;
+  $("retry-button").hidden = !(mode.retry && state.wrong.length > 0);
   showScreen("result");
 }
 
@@ -291,8 +405,11 @@ function init() {
   for (const e of errors) console.error(`문항 오류 [${e.category}] ${e.id}: ${e.reason}`);
   brokenCategories = new Set(errors.map(e => e.category));
   $("next-button").addEventListener("click", nextQuestion);
+  $("hint-button").addEventListener("click", useHint);
+  $("retry-button").addEventListener("click", startRetry);
   $("again-button").addEventListener("click", () => startGame(state.mode, state.category));
   $("home-button").addEventListener("click", renderStart);
+  $("mode-back-button").addEventListener("click", renderStart);
   renderStart();
 }
 

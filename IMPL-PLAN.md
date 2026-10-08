@@ -88,7 +88,7 @@ node -e "const fs=require('fs'),vm=require('vm');const ctx=vm.createContext({con
 **인터페이스:**
 - 만드는 것: `shuffle(array, rand = Math.random) → 새 배열`, `formatScore(n) → 문자열`, `test(name, fn)`, `assertEqual(actual, expected, label)`, `runSelfTests() → 실패 개수`, 상수 `zero`(늘 0을 돌려주는 가짜 난수)
 
-- [ ] **1단계: `index.html` 만들기 (1단계용 화면 3개)**
+- [x] **1단계: `index.html` 만들기 (1단계용 화면 3개)**
 
 ```html
 <!DOCTYPE html>
@@ -141,7 +141,7 @@ node -e "const fs=require('fs'),vm=require('vm');const ctx=vm.createContext({con
 </html>
 ```
 
-- [ ] **2단계: `style.css` 만들기 (기본 스타일)**
+- [x] **2단계: `style.css` 만들기 (기본 스타일)**
 
 ```css
 :root {
@@ -203,14 +203,14 @@ button:disabled { cursor: default; opacity: 0.6; }
 
 `[hidden] { display: none !important; }`는 `display: grid` 같은 규칙이 `hidden` 속성을 덮어쓰지 못하게 한다.
 
-- [ ] **3단계: `questions.js` 만들기 (빈 목록)**
+- [x] **3단계: `questions.js` 만들기 (빈 목록)**
 
 ```js
 const QUESTIONS = [
 ];
 ```
 
-- [ ] **4단계: `script.js` 만들기 — 구역 머리와 점검 틀, 실패할 점검 항목**
+- [x] **4단계: `script.js` 만들기 — 구역 머리와 점검 틀, 실패할 점검 항목**
 
 ```js
 // ===== 설정 =====
@@ -262,12 +262,12 @@ test("formatScore: 정수와 0.5", () => {
 // ===== 시작 =====
 ```
 
-- [ ] **5단계: 자체 점검을 실행해 실패를 확인**
+- [x] **5단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
 기대: `실패 shuffle: … shuffle is not defined` 등 실패 3건, `0 / 3 통과`, 종료 코드 1
 
-- [ ] **6단계: `// ===== 순수 함수 =====` 구역 끝에 `shuffle`, `formatScore` 추가**
+- [x] **6단계: `// ===== 순수 함수 =====` 구역 끝에 `shuffle`, `formatScore` 추가**
 
 ```js
 function shuffle(array, rand = Math.random) {
@@ -284,12 +284,12 @@ function formatScore(n) {
 }
 ```
 
-- [ ] **7단계: 자체 점검을 실행해 통과를 확인**
+- [x] **7단계: 자체 점검을 실행해 통과를 확인**
 
 실행: 자체 점검 명령
 기대: `3 / 3 통과`, 종료 코드 0
 
-- [ ] **8단계: 커밋**
+- [x] **8단계: 커밋**
 
 ```bash
 git add index.html style.css questions.js script.js
@@ -305,7 +305,7 @@ git commit -m "feat: 파일 뼈대와 자체 점검 틀"
 - 쓰는 것: `shuffle`, `test`, `assertEqual`, `zero`
 - 만드는 것: `CATEGORIES`(배열), `QUESTIONS_PER_ROUND`(10), `prepareQuestion(q, rand) → 보기를 섞고 answer를 다시 계산한 새 문항`, `buildRound(questions, category, rand) → 그 카테고리 문항을 섞은 배열`, `validateQuestions(questions) → [{ id, category, reason }]`, `reportQuestions() → 오류 개수`
 
-- [ ] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
 
 ```js
 function sampleQuestions() {
@@ -364,19 +364,19 @@ test("validateQuestions: 카테고리 문항 수", () => {
 });
 ```
 
-- [ ] **2단계: 자체 점검을 실행해 실패를 확인**
+- [x] **2단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
 기대: 새 항목 9개가 `… is not defined`로 실패, `3 / 12 통과`, 종료 코드 1
 
-- [ ] **3단계: `// ===== 설정 =====` 구역 끝에 상수 추가**
+- [x] **3단계: `// ===== 설정 =====` 구역 끝에 상수 추가**
 
 ```js
 const CATEGORIES = ["한국사", "세계지리", "과학", "예술과 문화"];
 const QUESTIONS_PER_ROUND = 10;
 ```
 
-- [ ] **4단계: `// ===== 순수 함수 =====` 구역 끝에 함수 추가**
+- [x] **4단계: `// ===== 순수 함수 =====` 구역 끝에 함수 추가**
 
 ```js
 function prepareQuestion(q, rand = Math.random) {
@@ -422,17 +422,17 @@ function reportQuestions() {
 
 `prepareQuestion`은 보기 문자열이 아니라 위치(0~3)를 섞은 뒤 정답 위치를 다시 찾는다. 그래서 보기 문자열이 겹쳐도 정답이 바뀌지 않는다.
 
-- [ ] **5단계: 자체 점검을 실행해 통과를 확인**
+- [x] **5단계: 자체 점검을 실행해 통과를 확인**
 
 실행: 자체 점검 명령
 기대: `12 / 12 통과`, 종료 코드 0
 
-- [ ] **6단계: 문항 검사 명령이 빈 목록을 잡아내는지 확인**
+- [x] **6단계: 문항 검사 명령이 빈 목록을 잡아내는지 확인**
 
 실행: 문항 검사 명령
 기대: `[한국사] -: 문항 수 0개(10개여야 함)` 등 카테고리 4줄, `문항 0개, 오류 4건`
 
-- [ ] **7단계: 커밋**
+- [x] **7단계: 커밋**
 
 ```bash
 git add script.js
@@ -484,12 +484,12 @@ git commit -m "feat: 문항 섞기와 문항 검사 함수"
 **인터페이스:**
 - 만드는 것: `QUESTIONS`에 `category: "한국사"` 문항 10개
 
-- [ ] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인)
-- [ ] **2단계:** 공통 절차 3~4로 `kh-01`~`kh-10`을 `QUESTIONS`에 넣기
-- [ ] **3단계:** 공통 절차 5의 검수표를 대화에 보고
-- [ ] **4단계:** 문항 검사 명령 실행. 기대: `[한국사]`로 시작하는 줄이 없음, `문항 10개, 오류 3건`(나머지 카테고리의 문항 수 오류)
-- [ ] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
-- [ ] **6단계: 커밋**
+- [x] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인)
+- [x] **2단계:** 공통 절차 3~4로 `kh-01`~`kh-10`을 `QUESTIONS`에 넣기
+- [x] **3단계:** 공통 절차 5의 검수표를 대화에 보고
+- [x] **4단계:** 문항 검사 명령 실행. 기대: `[한국사]`로 시작하는 줄이 없음, `문항 10개, 오류 3건`(나머지 카테고리의 문항 수 오류)
+- [x] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
+- [x] **6단계: 커밋**
 
 ```bash
 git add questions.js
@@ -504,12 +504,12 @@ git commit -m "feat: 한국사 문항 10개"
 **인터페이스:**
 - 만드는 것: `QUESTIONS`에 `category: "세계지리"` 문항 10개
 
-- [ ] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인). 세계지리는 면적, 인구, 길이, 높이처럼 최상급과 수치가 많은 분야다. 그래서 규칙 2(기준과 시점)와 규칙 4(출처끼리 값이 다르면 쓰지 않음)를 특히 확인한다.
-- [ ] **2단계:** 공통 절차 3~4로 `wg-01`~`wg-10`을 `QUESTIONS` 끝에 넣기
-- [ ] **3단계:** 공통 절차 5의 검수표를 대화에 보고
-- [ ] **4단계:** 문항 검사 명령 실행. 기대: `[세계지리]`, `[한국사]` 줄이 없음, `문항 20개, 오류 2건`
-- [ ] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
-- [ ] **6단계: 커밋**
+- [x] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인). 세계지리는 면적, 인구, 길이, 높이처럼 최상급과 수치가 많은 분야다. 그래서 규칙 2(기준과 시점)와 규칙 4(출처끼리 값이 다르면 쓰지 않음)를 특히 확인한다.
+- [x] **2단계:** 공통 절차 3~4로 `wg-01`~`wg-10`을 `QUESTIONS` 끝에 넣기
+- [x] **3단계:** 공통 절차 5의 검수표를 대화에 보고
+- [x] **4단계:** 문항 검사 명령 실행. 기대: `[세계지리]`, `[한국사]` 줄이 없음, `문항 20개, 오류 2건`
+- [x] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
+- [x] **6단계: 커밋**
 
 ```bash
 git add questions.js
@@ -524,12 +524,12 @@ git commit -m "feat: 세계지리 문항 10개"
 **인터페이스:**
 - 만드는 것: `QUESTIONS`에 `category: "과학"` 문항 10개
 
-- [ ] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인). 과학 수치(두께, 거리, 속도)는 자료마다 근삿값이 달라지기 쉽다. 출처끼리 다르면 수치를 쓰지 않는다(규칙 4).
-- [ ] **2단계:** 공통 절차 3~4로 `sc-01`~`sc-10`을 `QUESTIONS` 끝에 넣기
-- [ ] **3단계:** 공통 절차 5의 검수표를 대화에 보고
-- [ ] **4단계:** 문항 검사 명령 실행. 기대: `[과학]`, `[세계지리]`, `[한국사]` 줄이 없음, `문항 30개, 오류 1건`
-- [ ] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
-- [ ] **6단계: 커밋**
+- [x] **1단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인). 과학 수치(두께, 거리, 속도)는 자료마다 근삿값이 달라지기 쉽다. 출처끼리 다르면 수치를 쓰지 않는다(규칙 4).
+- [x] **2단계:** 공통 절차 3~4로 `sc-01`~`sc-10`을 `QUESTIONS` 끝에 넣기
+- [x] **3단계:** 공통 절차 5의 검수표를 대화에 보고
+- [x] **4단계:** 문항 검사 명령 실행. 기대: `[과학]`, `[세계지리]`, `[한국사]` 줄이 없음, `문항 30개, 오류 1건`
+- [x] **5단계:** 자체 점검 명령 실행. 기대: `12 / 12 통과`
+- [x] **6단계: 커밋**
 
 ```bash
 git add questions.js
@@ -544,23 +544,23 @@ git commit -m "feat: 과학 문항 10개"
 **인터페이스:**
 - 만드는 것: `QUESTIONS`에 `category: "예술과 문화"` 문항 10개. 자체 점검 항목 "문항 데이터: 오류 0건"
 
-- [ ] **1단계: `// ===== 자체 점검 =====` 구역 끝에 데이터 점검 항목 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 데이터 점검 항목 추가**
 
 ```js
 test("문항 데이터: 오류 0건", () => assertEqual(validateQuestions(QUESTIONS), []));
 ```
 
-- [ ] **2단계: 자체 점검을 실행해 실패를 확인**
+- [x] **2단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
 기대: `실패 문항 데이터: 오류 0건: … 문항 수 0개(10개여야 함)…`, `12 / 13 통과`, 종료 코드 1
 
-- [ ] **3단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인)
-- [ ] **4단계:** 공통 절차 3~4로 `ac-01`~`ac-10`을 `QUESTIONS` 끝에 넣기
-- [ ] **5단계:** 공통 절차 5의 검수표를 대화에 보고
-- [ ] **6단계:** 문항 검사 명령 실행. 기대: 오류 줄 없이 `문항 40개, 오류 0건`, 종료 코드 0
-- [ ] **7단계:** 자체 점검 명령 실행. 기대: `13 / 13 통과`, 종료 코드 0
-- [ ] **8단계: 커밋**
+- [x] **3단계:** 공통 절차 1~2(주제 고르기, 출처 2곳 확인)
+- [x] **4단계:** 공통 절차 3~4로 `ac-01`~`ac-10`을 `QUESTIONS` 끝에 넣기
+- [x] **5단계:** 공통 절차 5의 검수표를 대화에 보고
+- [x] **6단계:** 문항 검사 명령 실행. 기대: 오류 줄 없이 `문항 40개, 오류 0건`, 종료 코드 0
+- [x] **7단계:** 자체 점검 명령 실행. 기대: `13 / 13 통과`, 종료 코드 0
+- [x] **8단계: 커밋**
 
 ```bash
 git add questions.js script.js
@@ -575,7 +575,7 @@ git commit -m "feat: 예술과 문화 문항 10개와 문항 데이터 점검"
 **인터페이스:**
 - 만드는 것: `MODES`(키 `practice`, `speed`, `hint`, 각 값은 `{ label, timeLimit, hint, ranked, retry }`), `scoreFor(correct, hintUsed) → 0 | 0.5 | 1`
 
-- [ ] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
 
 ```js
 test("scoreFor: 정답 1점, 힌트 정답 0.5점, 오답 0점", () => {
@@ -591,12 +591,12 @@ test("MODES: 모드별 규칙", () => {
 });
 ```
 
-- [ ] **2단계: 자체 점검을 실행해 실패를 확인**
+- [x] **2단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
 기대: 새 항목 2개 실패, `13 / 15 통과`, 종료 코드 1
 
-- [ ] **3단계: `// ===== 설정 =====` 구역 끝에 `MODES` 추가**
+- [x] **3단계: `// ===== 설정 =====` 구역 끝에 `MODES` 추가**
 
 ```js
 const MODES = {
@@ -606,7 +606,7 @@ const MODES = {
 };
 ```
 
-- [ ] **4단계: `// ===== 순수 함수 =====` 구역 끝에 `scoreFor` 추가**
+- [x] **4단계: `// ===== 순수 함수 =====` 구역 끝에 `scoreFor` 추가**
 
 ```js
 function scoreFor(correct, hintUsed) {
@@ -615,12 +615,12 @@ function scoreFor(correct, hintUsed) {
 }
 ```
 
-- [ ] **5단계: 자체 점검을 실행해 통과를 확인**
+- [x] **5단계: 자체 점검을 실행해 통과를 확인**
 
 실행: 자체 점검 명령
 기대: `15 / 15 통과`, 종료 코드 0
 
-- [ ] **6단계: 커밋**
+- [x] **6단계: 커밋**
 
 ```bash
 git add script.js
@@ -641,7 +641,7 @@ git commit -m "feat: 모드 설정표와 점수 계산"
 
 이 태스크는 화면 코드라 Node 점검 대상이 아니다. 대신 자체 점검이 그대로 통과하는지 확인해서, 화면 코드가 Node 실행을 깨지 않는지 본다. 화면 동작은 1단계 끝에서 사람이 브라우저로 확인한다.
 
-- [ ] **1단계: `// ===== 화면 =====` 구역 끝에 추가**
+- [x] **1단계: `// ===== 화면 =====` 구역 끝에 추가**
 
 ```js
 const state = {
@@ -756,7 +756,7 @@ function renderResult() {
 }
 ```
 
-- [ ] **2단계: `// ===== 시작 =====` 구역 끝에 추가**
+- [x] **2단계: `// ===== 시작 =====` 구역 끝에 추가**
 
 ```js
 function init() {
@@ -772,29 +772,29 @@ function init() {
 if (typeof document !== "undefined") init();
 ```
 
-- [ ] **3단계: 자체 점검과 문항 검사 실행**
+- [x] **3단계: 자체 점검과 문항 검사 실행**
 
 실행: 자체 점검 명령, 문항 검사 명령
 기대: `15 / 15 통과`, `문항 40개, 오류 0건`, 둘 다 종료 코드 0
 
-- [ ] **4단계: 커밋**
+- [x] **4단계: 커밋**
 
 ```bash
 git add script.js
 git commit -m "feat: 연습 모드 화면 연결"
 ```
 
-- [ ] **5단계: 멈추고 1단계 확인을 사람에게 요청**
+- [x] **5단계: 멈추고 1단계 확인을 사람에게 요청**
 
 아래 1단계 완료 기준을 실행자가 점검해 보고한 뒤, "1단계 직접 확인할 항목"을 사람에게 보여 주고 확인을 기다린다.
 
 ## 1단계 완료 기준 (실행자가 점검)
 
-- [ ] 자체 점검 `15 / 15 통과`, 종료 코드 0
-- [ ] 문항 검사 `문항 40개, 오류 0건`
-- [ ] 태스크 3~6의 검수표 40행이 모두 대화에 보고되었고, 모든 문항이 출처 2곳으로 확인되었다
-- [ ] 파일이 `index.html`, `style.css`, `script.js`, `questions.js` 4개뿐이다(문서 파일 제외)
-- [ ] `script.js`에 `fetch`, `import`, `export`가 없다
+- [x] 자체 점검 `15 / 15 통과`, 종료 코드 0
+- [x] 문항 검사 `문항 40개, 오류 0건`
+- [x] 태스크 3~6의 검수표 40행이 모두 대화에 보고되었고, 모든 문항이 출처 2곳으로 확인되었다
+- [x] 파일이 `index.html`, `style.css`, `script.js`, `questions.js` 4개뿐이다(문서 파일 제외)
+- [x] `script.js`에 `fetch`, `import`, `export`가 없다
 
 ## 1단계 직접 확인할 항목 (사람이 브라우저에서)
 
@@ -819,8 +819,8 @@ git commit -m "feat: 연습 모드 화면 연결"
 # 2단계: 스피드 모드, 힌트 모드, 모드 선택 화면, 틀린 문제 다시 풀기 (태스크 9~12)
 
 **만들 것:**
-- 시작 화면에서 모드 3개 중 하나를 고르는 화면
-- 스피드 모드의 15초 타이머. 시간이 지나면 오답이고, 해설이 보이는 동안 멈췄다가 [다음]을 누르면 15초부터 다시 센다.
+- 카테고리를 고르면 나오는 모드 선택 화면. 모드 3개와 한 줄 규칙을 보여 주고, [뒤로]로 시작 화면에 돌아간다.
+- 스피드 모드의 15초 타이머. 시간이 지나면 오답이고, 해설이 보이는 동안 멈췄다가 [다음]을 누르면 15초부터 다시 센다. 5초 이하에서 빨간색이 된다.
 - 힌트 모드. 문항마다 1번, 오답 보기 2개를 지우고, 힌트를 쓰고 맞히면 0.5점이다.
 - 연습 모드의 틀린 문제 다시 풀기. 다 맞힐 때까지 반복할 수 있고, 처음 점수는 그대로다.
 
@@ -830,48 +830,64 @@ git commit -m "feat: 연습 모드 화면 연결"
 - 고치기: `index.html`, `style.css`, `script.js` (화면 구역)
 
 **인터페이스:**
-- 쓰는 것: `MODES`, `state.mode`
-- 만드는 것: `renderOptionButtons(containerId, options, selected, onPick)`. `options`는 `[값, 표시 이름]` 쌍의 배열이고, 고른 버튼에 `selected` 클래스를 붙인다. 태스크 14에서도 쓴다.
+- 쓰는 것: `MODES`, `CATEGORIES`, `brokenCategories`, `startGame(mode, category)`
+- 만드는 것: `MODES[모드].rule`(한 줄 규칙 문자열), `renderModeSelect(category)`, 화면 이름 `"mode"`(`screen-mode`)
 
-- [ ] **1단계: `index.html`의 시작 화면에서 `<h1>상식 퀴즈</h1>` 바로 아래에 추가**
+노트 5.5.2.2처럼 시작 화면에서는 카테고리만 고르고, 카테고리를 누르면 모드 선택 화면이 나온다. "순위표에 기록되지 않음"은 시작 화면에서 빼고 연습 모드 버튼으로 옮긴다.
 
-```html
-      <h2>모드</h2>
-      <div id="mode-buttons" class="button-grid"></div>
-```
-
-- [ ] **2단계: `style.css` 끝에 추가**
-
-```css
-button.selected { background: var(--primary); border-color: var(--primary); color: #fff; }
-```
-
-- [ ] **3단계: `script.js`의 `renderStart` 함수 바로 위에 `renderOptionButtons` 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
 
 ```js
-function renderOptionButtons(containerId, options, selected, onPick) {
-  const box = $(containerId);
-  box.innerHTML = "";
-  for (const [value, label] of options) {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = label;
-    btn.classList.toggle("selected", value === selected);
-    btn.addEventListener("click", () => onPick(value));
-    box.appendChild(btn);
-  }
-}
+test("MODES: 모드마다 한 줄 규칙 설명이 있음", () => {
+  for (const m of Object.values(MODES)) assertEqual(typeof m.rule === "string" && m.rule.length > 0, true, m.label);
+});
 ```
 
-- [ ] **4단계: `renderStart` 함수 전체를 아래로 바꾸기**
+- [x] **2단계: 자체 점검을 실행해 실패를 확인**
+
+실행: 자체 점검 명령
+기대: 새 항목 1개 실패, `15 / 16 통과`, 종료 코드 1
+
+- [x] **3단계: `MODES`에 `rule` 추가**
+
+```js
+const MODES = {
+  practice: { label: "연습", timeLimit: 0, hint: false, ranked: false, retry: true,
+    rule: "시간 제한과 힌트 없음, 맞히면 1점, 틀린 문제 다시 풀기" },
+  speed: { label: "스피드", timeLimit: 15, hint: false, ranked: true, retry: false,
+    rule: "문항마다 15초, 시간이 지나면 오답" },
+  hint: { label: "힌트", timeLimit: 0, hint: true, ranked: true, retry: false,
+    rule: "문항마다 힌트 1번(오답 2개 지우기), 힌트를 쓰고 맞히면 0.5점" }
+};
+```
+
+- [x] **4단계: `index.html`의 시작 화면을 바꾸고 모드 선택 화면 추가**
+
+시작 화면에서 `<p id="start-notice" …>순위표에 기록되지 않음</p>` 줄을 지운다. 시작 화면 `</section>` 바로 아래에 추가한다.
+
+```html
+
+    <section id="screen-mode" class="screen" hidden>
+      <h1 id="mode-title"></h1>
+      <div id="mode-list" class="mode-list"></div>
+      <button id="mode-back-button" type="button">뒤로</button>
+    </section>
+```
+
+- [x] **5단계: `style.css` 끝에 추가**
+
+```css
+.mode-list { display: grid; gap: 8px; margin-bottom: 16px; }
+.mode-option { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+.mode-name { font-weight: 700; }
+.mode-rule { color: var(--muted); font-size: 0.9rem; }
+.mode-notice { color: var(--muted); font-size: 0.85rem; }
+```
+
+- [x] **6단계: `renderStart`를 고치고 `renderModeSelect` 추가**
 
 ```js
 function renderStart() {
-  renderOptionButtons("mode-buttons", Object.entries(MODES).map(([k, m]) => [k, m.label]), state.mode, mode => {
-    state.mode = mode;
-    renderStart();
-  });
-  $("start-notice").hidden = MODES[state.mode].ranked;
   const box = $("category-buttons");
   box.innerHTML = "";
   for (const c of CATEGORIES) {
@@ -879,19 +895,48 @@ function renderStart() {
     btn.type = "button";
     btn.textContent = c;
     btn.disabled = brokenCategories.has(c);
-    btn.addEventListener("click", () => startGame(state.mode, c));
+    btn.addEventListener("click", () => renderModeSelect(c));
     box.appendChild(btn);
   }
   showScreen("start");
 }
+
+function renderModeSelect(category) {
+  state.category = category;
+  $("mode-title").textContent = `${category} · 모드를 고르세요`;
+  const box = $("mode-list");
+  box.innerHTML = "";
+  for (const [key, mode] of Object.entries(MODES)) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "mode-option";
+    const parts = [["mode-name", mode.label], ["mode-rule", mode.rule]];
+    if (!mode.ranked) parts.push(["mode-notice", "순위표에 기록되지 않음"]);
+    for (const [cls, text] of parts) {
+      const span = document.createElement("span");
+      span.className = cls;
+      span.textContent = text;
+      btn.appendChild(span);
+    }
+    btn.addEventListener("click", () => startGame(key, category));
+    box.appendChild(btn);
+  }
+  showScreen("mode");
+}
 ```
 
-- [ ] **5단계: 자체 점검 실행**
+`init` 함수에서 `$("home-button").addEventListener("click", renderStart);` 바로 아래에 추가한다.
+
+```js
+  $("mode-back-button").addEventListener("click", renderStart);
+```
+
+- [x] **7단계: 자체 점검 실행**
 
 실행: 자체 점검 명령
-기대: `15 / 15 통과`, 종료 코드 0
+기대: `16 / 16 통과`, 종료 코드 0
 
-- [ ] **6단계: 커밋**
+- [x] **8단계: 커밋**
 
 ```bash
 git add index.html style.css script.js
@@ -905,9 +950,31 @@ git commit -m "feat: 모드 선택 화면"
 
 **인터페이스:**
 - 쓰는 것: `MODES[mode].timeLimit`, `state.timerId`, `state.timeLeft`, `selectAnswer(-1)`
-- 만드는 것: `startTimer()`, `stopTimer()`, `updateTimer()`, `onTimeout()`
+- 만드는 것: `URGENT_SECONDS`(5), `isUrgent(timeLeft) → 5초 이하이면 true`, `startTimer()`, `stopTimer()`, `updateTimer()`, `onTimeout()`
 
-- [ ] **1단계: `index.html`의 문항 화면에서 `<div class="quiz-header">…</div>` 바로 아래에 추가**
+- [x] **0단계: 5초 경고를 점검 항목부터 추가**
+
+`// ===== 자체 점검 =====` 구역 끝에 추가하고, 자체 점검이 `16 / 17 통과`로 실패하는지 확인한다.
+
+```js
+test("isUrgent: 5초 이하에서만 경고", () => {
+  assertEqual([15, 6, 5, 1, 0].map(isUrgent), [false, false, true, true, true]);
+});
+```
+
+`// ===== 설정 =====` 구역 끝(`MODES` 아래)과 `// ===== 순수 함수 =====` 구역 끝에 각각 추가하고, `17 / 17 통과`를 확인한다.
+
+```js
+const URGENT_SECONDS = 5;
+```
+
+```js
+function isUrgent(timeLeft) {
+  return timeLeft <= URGENT_SECONDS;
+}
+```
+
+- [x] **1단계: `index.html`의 문항 화면에서 `<div class="quiz-header">…</div>` 바로 아래에 추가**
 
 ```html
       <div id="timer" class="timer" hidden>
@@ -916,15 +983,17 @@ git commit -m "feat: 모드 선택 화면"
       </div>
 ```
 
-- [ ] **2단계: `style.css` 끝에 추가**
+- [x] **2단계: `style.css` 끝에 추가**
 
 ```css
 .timer { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
 .timer-bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
 .timer-fill { height: 100%; background: var(--primary); transition: width 1s linear; }
+.timer.urgent #timer-text { color: var(--wrong); font-weight: 700; }
+.timer.urgent .timer-fill { background: var(--wrong); }
 ```
 
-- [ ] **3단계: `script.js`의 `nextQuestion` 함수 바로 아래에 타이머 함수 추가**
+- [x] **3단계: `script.js`의 `nextQuestion` 함수 바로 아래에 타이머 함수 추가**
 
 ```js
 function startTimer() {
@@ -945,6 +1014,7 @@ function stopTimer() {
 
 function updateTimer() {
   $("timer-text").textContent = `${state.timeLeft}초`;
+  $("timer").classList.toggle("urgent", isUrgent(state.timeLeft));
   $("timer-fill").style.width = `${(state.timeLeft / MODES[state.mode].timeLimit) * 100}%`;
 }
 
@@ -953,14 +1023,14 @@ function onTimeout() {
 }
 ```
 
-- [ ] **4단계: `renderQuestion` 함수의 마지막 줄 `$("quiz-feedback").hidden = true;` 바로 아래에 추가**
+- [x] **4단계: `renderQuestion` 함수의 마지막 줄 `$("quiz-feedback").hidden = true;` 바로 아래에 추가**
 
 ```js
   $("timer").hidden = mode.timeLimit === 0;
   if (mode.timeLimit > 0) startTimer();
 ```
 
-- [ ] **5단계: `selectAnswer` 함수를 두 군데 고치기**
+- [x] **5단계: `selectAnswer` 함수를 두 군데 고치기**
 
 함수 첫 줄(`const q = state.questions[state.index];`) 바로 위에 추가한다. 답을 고르거나 시간이 다 되면 타이머가 멈춘다.
 
@@ -980,12 +1050,12 @@ function onTimeout() {
   result.textContent = correct ? "정답!" : (i === -1 ? "시간 초과 · 오답" : "오답");
 ```
 
-- [ ] **6단계: 자체 점검 실행**
+- [x] **6단계: 자체 점검 실행**
 
 실행: 자체 점검 명령
-기대: `15 / 15 통과`, 종료 코드 0
+기대: `17 / 17 통과`, 종료 코드 0
 
-- [ ] **7단계: 커밋**
+- [x] **7단계: 커밋**
 
 ```bash
 git add index.html style.css script.js
@@ -1001,7 +1071,7 @@ git commit -m "feat: 스피드 모드 15초 타이머"
 - 쓰는 것: `shuffle`, `scoreFor(correct, state.hintUsed)`, `MODES[mode].hint`
 - 만드는 것: `pickHintRemovals(answer, rand) → 지울 오답 위치 2개(오름차순)`, `useHint()`
 
-- [ ] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
 
 ```js
 test("pickHintRemovals: rand가 0이면 정해진 2개", () => assertEqual(pickHintRemovals(2, zero), [1, 3]));
@@ -1017,12 +1087,12 @@ test("pickHintRemovals: 항상 오답 2개", () => {
 });
 ```
 
-- [ ] **2단계: 자체 점검을 실행해 실패를 확인**
+- [x] **2단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
-기대: 새 항목 2개 실패, `15 / 17 통과`, 종료 코드 1
+기대: 새 항목 2개 실패, `17 / 19 통과`, 종료 코드 1
 
-- [ ] **3단계: `// ===== 순수 함수 =====` 구역 끝에 추가**
+- [x] **3단계: `// ===== 순수 함수 =====` 구역 끝에 추가**
 
 ```js
 function pickHintRemovals(answer, rand = Math.random) {
@@ -1031,25 +1101,25 @@ function pickHintRemovals(answer, rand = Math.random) {
 }
 ```
 
-- [ ] **4단계: 자체 점검을 실행해 통과를 확인**
+- [x] **4단계: 자체 점검을 실행해 통과를 확인**
 
 실행: 자체 점검 명령
-기대: `17 / 17 통과`, 종료 코드 0
+기대: `19 / 19 통과`, 종료 코드 0
 
-- [ ] **5단계: `index.html`의 문항 화면에서 `<p id="quiz-question" class="question"></p>` 바로 아래에 추가**
+- [x] **5단계: `index.html`의 문항 화면에서 `<p id="quiz-question" class="question"></p>` 바로 아래에 추가**
 
 ```html
       <button id="hint-button" type="button" class="hint-button" hidden>힌트 (오답 2개 지우기)</button>
 ```
 
-- [ ] **6단계: `style.css` 끝에 추가**
+- [x] **6단계: `style.css` 끝에 추가**
 
 ```css
 .hint-button { margin-bottom: 12px; }
 .choice.removed { display: none; }
 ```
 
-- [ ] **7단계: `script.js`의 `onTimeout` 함수 바로 아래에 `useHint` 추가**
+- [x] **7단계: `script.js`의 `onTimeout` 함수 바로 아래에 `useHint` 추가**
 
 ```js
 function useHint() {
@@ -1064,31 +1134,31 @@ function useHint() {
 }
 ```
 
-- [ ] **8단계: `renderQuestion`에서 `$("quiz-feedback").hidden = true;` 바로 아래(타이머 두 줄 위)에 추가**
+- [x] **8단계: `renderQuestion`에서 `$("quiz-feedback").hidden = true;` 바로 아래(타이머 두 줄 위)에 추가**
 
 ```js
   $("hint-button").hidden = !mode.hint;
   $("hint-button").disabled = false;
 ```
 
-- [ ] **9단계: `selectAnswer`에서 `stopTimer();` 바로 아래에 추가 (답을 고른 뒤 힌트 버튼을 끈다)**
+- [x] **9단계: `selectAnswer`에서 `stopTimer();` 바로 아래에 추가 (답을 고른 뒤 힌트 버튼을 끈다)**
 
 ```js
   $("hint-button").disabled = true;
 ```
 
-- [ ] **10단계: `init` 함수에서 `$("next-button").addEventListener("click", nextQuestion);` 바로 아래에 추가**
+- [x] **10단계: `init` 함수에서 `$("next-button").addEventListener("click", nextQuestion);` 바로 아래에 추가**
 
 ```js
   $("hint-button").addEventListener("click", useHint);
 ```
 
-- [ ] **11단계: 자체 점검 실행**
+- [x] **11단계: 자체 점검 실행**
 
 실행: 자체 점검 명령
-기대: `17 / 17 통과`, 종료 코드 0
+기대: `19 / 19 통과`, 종료 코드 0
 
-- [ ] **12단계: 커밋**
+- [x] **12단계: 커밋**
 
 ```bash
 git add index.html style.css script.js
@@ -1104,7 +1174,7 @@ git commit -m "feat: 힌트 모드"
 - 쓰는 것: `state.wrong`, `state.firstScore`, `state.isRetry`, `shuffle`, `prepareQuestion`, `MODES[mode].retry`
 - 만드는 것: `startRetry()`. `renderResult()`는 다시 푼 판이면 `state.firstScore`를 바꾸지 않는다.
 
-- [ ] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
+- [x] **1단계: `// ===== 자체 점검 =====` 구역 끝에 점검 항목 추가**
 
 다시 풀기는 이미 섞인 문항을 한 번 더 섞는다. 두 번 섞어도 정답이 유지되는지 확인한다. 태스크 2의 구현이 이미 이 조건을 만족하므로 바로 통과하는 것이 정상이다.
 
@@ -1116,12 +1186,12 @@ test("prepareQuestion: 두 번 적용해도 정답 보기가 같음", () => {
 });
 ```
 
-- [ ] **2단계: 자체 점검 실행**
+- [x] **2단계: 자체 점검 실행**
 
 실행: 자체 점검 명령
-기대: `18 / 18 통과`, 종료 코드 0
+기대: `20 / 20 통과`, 종료 코드 0
 
-- [ ] **3단계: `index.html`의 결과 화면에서 `<p id="result-score" class="big-score"></p>` 바로 아래에 추가**
+- [x] **3단계: `index.html`의 결과 화면에서 `<p id="result-score" class="big-score"></p>` 바로 아래에 추가**
 
 ```html
       <p id="retry-summary" hidden></p>
@@ -1133,7 +1203,7 @@ test("prepareQuestion: 두 번 적용해도 정답 보기가 같음", () => {
         <button id="retry-button" type="button" hidden>틀린 문제 다시 풀기</button>
 ```
 
-- [ ] **4단계: `script.js`의 `useHint` 함수 바로 아래에 `startRetry` 추가**
+- [x] **4단계: `script.js`의 `useHint` 함수 바로 아래에 `startRetry` 추가**
 
 ```js
 function startRetry() {
@@ -1147,7 +1217,7 @@ function startRetry() {
 }
 ```
 
-- [ ] **5단계: `renderResult` 함수 전체를 아래로 바꾸기**
+- [x] **5단계: `renderResult` 함수 전체를 아래로 바꾸기**
 
 ```js
 function renderResult() {
@@ -1163,44 +1233,44 @@ function renderResult() {
 }
 ```
 
-- [ ] **6단계: `init` 함수에서 `$("hint-button").addEventListener("click", useHint);` 바로 아래에 추가**
+- [x] **6단계: `init` 함수에서 `$("hint-button").addEventListener("click", useHint);` 바로 아래에 추가**
 
 ```js
   $("retry-button").addEventListener("click", startRetry);
 ```
 
-- [ ] **7단계: 자체 점검과 문항 검사 실행**
+- [x] **7단계: 자체 점검과 문항 검사 실행**
 
 실행: 자체 점검 명령, 문항 검사 명령
-기대: `18 / 18 통과`, `문항 40개, 오류 0건`, 둘 다 종료 코드 0
+기대: `20 / 20 통과`, `문항 40개, 오류 0건`, 둘 다 종료 코드 0
 
-- [ ] **8단계: 커밋**
+- [x] **8단계: 커밋**
 
 ```bash
 git add index.html script.js
 git commit -m "feat: 연습 모드 틀린 문제 다시 풀기"
 ```
 
-- [ ] **9단계: 멈추고 2단계 확인을 사람에게 요청**
+- [x] **9단계: 멈추고 2단계 확인을 사람에게 요청**
 
 아래 2단계 완료 기준을 점검해 보고한 뒤, "2단계 직접 확인할 항목"을 사람에게 보여 주고 확인을 기다린다.
 
 ## 2단계 완료 기준 (실행자가 점검)
 
-- [ ] 자체 점검 `18 / 18 통과`, 종료 코드 0
-- [ ] 문항 검사 `문항 40개, 오류 0건`
-- [ ] `MODES`의 값이 PRD 2.1 표와 같다(자체 점검 "MODES: 모드별 규칙" 통과)
-- [ ] 힌트로 지우는 보기에 정답이 들어가지 않는다(자체 점검 "pickHintRemovals" 통과)
-- [ ] 파일이 여전히 4개뿐이다
+- [x] 자체 점검 `20 / 20 통과`, 종료 코드 0
+- [x] 문항 검사 `문항 40개, 오류 0건`
+- [x] `MODES`의 값이 PRD 2.1 표와 같다(자체 점검 "MODES: 모드별 규칙" 통과)
+- [x] 힌트로 지우는 보기에 정답이 들어가지 않는다(자체 점검 "pickHintRemovals" 통과)
+- [x] 파일이 여전히 4개뿐이다
 
 ## 2단계 직접 확인할 항목 (사람이 브라우저에서)
 
 `index.html`을 새로고침한다.
 
-1. 시작 화면에 모드 버튼 3개(연습, 스피드, 힌트)가 있고, 처음에는 [연습]이 파란색(선택됨)이다.
-2. [연습]을 고르면 "순위표에 기록되지 않음"이 보이고, [스피드]나 [힌트]를 고르면 사라진다.
-3. [스피드]를 고르고 카테고리를 누르면 상단에 "… · 스피드"가 보이고, "15초"와 막대가 나타난다.
-4. 숫자가 1초에 1씩 줄고 막대도 함께 줄어든다.
+1. 시작 화면에는 카테고리 버튼 4개만 있고 "순위표에 기록되지 않음" 문구가 없다.
+2. 카테고리(예: [과학])를 누르면 "과학 · 모드를 고르세요"와 모드 버튼 3개(연습, 스피드, 힌트)가 나오고, 버튼마다 한 줄 규칙이 있다. "순위표에 기록되지 않음"은 연습 버튼에만 있고, [뒤로]를 누르면 시작 화면으로 돌아간다.
+3. [스피드]를 누르면 상단에 "… · 스피드"가 보이고, "15초"와 막대가 나타난다.
+4. 숫자가 1초에 1씩 줄고 막대도 함께 줄어들며, 5초 이하가 되면 숫자와 막대가 빨간색으로 바뀐다.
 5. 답을 고르지 않고 기다리면 0초가 될 때 "시간 초과 · 오답"이 나오고, 정답 보기가 초록색으로 표시된다.
 6. 해설이 보이는 동안에는 몇 초를 기다려도 남은 초가 줄지 않는다.
 7. [다음]을 누르면 다음 문항에서 다시 "15초"부터 센다.
@@ -1320,7 +1390,7 @@ test("loadBoard: localStorage가 없으면 빈 순위표", () => assertEqual(loa
 - [ ] **2단계: 자체 점검을 실행해 실패를 확인**
 
 실행: 자체 점검 명령
-기대: 새 항목 10개 실패, `18 / 28 통과`, 종료 코드 1
+기대: 새 항목 10개 실패, `20 / 30 통과`, 종료 코드 1
 
 - [ ] **3단계: `// ===== 순위표 =====` 구역 끝에 추가**
 
@@ -1392,7 +1462,7 @@ function saveRecord(mode, category, name, score) {
 - [ ] **4단계: 자체 점검을 실행해 통과를 확인**
 
 실행: 자체 점검 명령
-기대: `28 / 28 통과`, 종료 코드 0
+기대: `30 / 30 통과`, 종료 코드 0
 
 - [ ] **5단계: 커밋**
 
@@ -1407,8 +1477,10 @@ git commit -m "feat: 순위표 저장 로직"
 - 고치기: `index.html`, `style.css`, `script.js` (화면, 시작 구역)
 
 **인터페이스:**
-- 쓰는 것: `saveRecord`, `loadBoard`, `boardKey`, `renderOptionButtons`, `MODES`, `CATEGORIES`, `formatScore`, `state.firstScore`
-- 만드는 것: `boardView`(`{ mode, category }`, 순위표 화면에서 고른 표), `onSaveRecord(event)`, `renderLeaderboard()`
+- 쓰는 것: `saveRecord`, `loadBoard`, `boardKey`, `MODES`, `CATEGORIES`, `formatScore`, `state.firstScore`
+- 만드는 것: `renderOptionButtons(containerId, options, selected, onPick)`(`options`는 `[값, 표시 이름]` 쌍의 배열, 고른 버튼에 `selected` 클래스), `boardView`(`{ mode, category }`, 순위표 화면에서 고른 표), `onSaveRecord(event)`, `renderLeaderboard()`
+
+2단계에서 모드 선택을 별도 화면으로 바꾸면서 `renderOptionButtons`를 쓰지 않게 되었다. 순위표 화면의 모드·카테고리 고르기에 필요하므로 이 태스크에서 만든다.
 
 - [ ] **1단계: `index.html` 세 군데 고치기**
 
@@ -1452,12 +1524,28 @@ git commit -m "feat: 순위표 저장 로직"
 .save-form input { font: inherit; padding: 9px 10px; border: 1px solid var(--border); border-radius: 8px; }
 .board-table { width: 100%; border-collapse: collapse; margin: 12px 0 16px; }
 .board-table th, .board-table td { padding: 8px; border-bottom: 1px solid var(--border); text-align: center; }
+button.selected { background: var(--primary); border-color: var(--primary); color: #fff; }
 ```
 
-- [ ] **3단계: `script.js`의 `let brokenCategories = new Set();` 바로 위에 추가**
+- [ ] **3단계: `script.js`의 `let brokenCategories = new Set();` 바로 위에 `boardView`를, `renderStart` 함수 바로 위에 `renderOptionButtons`를 추가**
 
 ```js
 const boardView = { mode: "speed", category: CATEGORIES[0] };
+```
+
+```js
+function renderOptionButtons(containerId, options, selected, onPick) {
+  const box = $(containerId);
+  box.innerHTML = "";
+  for (const [value, label] of options) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = label;
+    btn.classList.toggle("selected", value === selected);
+    btn.addEventListener("click", () => onPick(value));
+    box.appendChild(btn);
+  }
+}
 ```
 
 - [ ] **4단계: `renderResult` 함수 전체를 아래로 바꾸기**
@@ -1539,7 +1627,7 @@ function renderLeaderboard() {
 - [ ] **7단계: 자체 점검과 문항 검사 실행**
 
 실행: 자체 점검 명령, 문항 검사 명령
-기대: `28 / 28 통과`, `문항 40개, 오류 0건`, 둘 다 종료 코드 0
+기대: `30 / 30 통과`, `문항 40개, 오류 0건`, 둘 다 종료 코드 0
 
 - [ ] **8단계: 커밋**
 
@@ -1554,7 +1642,7 @@ git commit -m "feat: 기록 저장과 순위표 화면"
 
 ## 3단계 완료 기준 (실행자가 점검)
 
-- [ ] 자체 점검 `28 / 28 통과`, 종료 코드 0
+- [ ] 자체 점검 `30 / 30 통과`, 종료 코드 0
 - [ ] 문항 검사 `문항 40개, 오류 0건`
 - [ ] 같은 점수 처리, 5건 초과분 삭제, 깨진 값 처리, 저장 실패 처리를 자체 점검이 모두 확인한다(`insertRecord`, `parseBoard`, `saveRecord` 항목 통과)
 - [ ] 순위표에 이름을 넣을 때 `innerHTML`을 쓰지 않는다
@@ -1564,7 +1652,7 @@ git commit -m "feat: 기록 저장과 순위표 화면"
 
 `index.html`을 새로고침한다.
 
-1. 시작 화면에 [순위표] 버튼이 있다.
+1. 시작 화면(카테고리 버튼 아래)에 [순위표] 버튼이 있다.
 2. 기록이 없을 때 [순위표]를 누르면 "아직 기록이 없습니다"가 보이고, [처음으로]로 돌아갈 수 있다.
 3. 스피드 모드로 한 판을 끝내면 결과 화면에 이름 입력칸과 [기록 저장]이 보인다. 연습 모드 결과 화면에는 보이지 않는다.
 4. 이름을 넣고 [기록 저장]을 누르면 "1위로 기록했습니다"가 나오고 버튼이 꺼진다.
@@ -1592,7 +1680,7 @@ git commit -m "feat: 기록 저장과 순위표 화면"
 | 2.1 힌트: 문항마다 1번, 오답 2개 제거, 0.5점, 답 고른 뒤 비활성 | 7, 11 |
 | 2.1 틀리면 모든 모드 0점 | 7 |
 | 2.2 해설 출처(기관명과 URL), 60자 이내 한 줄 / CLAUDE.md 규칙 10개 | 2(검사), 3~6(작성 절차와 검수표) |
-| 3.1 시작 화면: 모드 선택, 카테고리, 안내 문구, [순위표] | 8, 9, 14 |
+| 3.1 시작 화면: 카테고리, [순위표] / 3.1.1 모드 선택 화면: 모드별 한 줄 규칙, 연습 모드 안내 문구, [뒤로] | 8, 9, 14 |
 | 3.2 문항 화면: 판마다 섞기, 상단 정보, 보기 잠금과 색, 해설·출처, [다음]/[결과 보기] | 2, 8 |
 | 3.2 스피드 타이머 막대, 힌트 버튼 | 10, 11 |
 | 3.3 결과 화면: 점수 형식, 안내 문구, 다시 풀기, [다시 하기]/[처음으로] | 8, 12 |
