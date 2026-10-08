@@ -42,7 +42,7 @@ const QUESTIONS = [
   {
     id: "kh-05",
     category: "한국사",
-    question: "세종 때 만들어 빗물의 양(강우량)을 재는 데 쓴 기구는?",
+    question: "세종 때 만들어 비가 내린 양을 재는 데 쓴 기구는?",
     choices: ["측우기", "자격루", "혼천의", "해시계"],
     answer: 0,
     explanation: "측우기는 세종 때 만든, 조선의 공식 강우량 측정 기구다.",
@@ -62,7 +62,7 @@ const QUESTIONS = [
   {
     id: "kh-07",
     category: "한국사",
-    question: "임진왜란 동안 이순신이 직접 쓴 일기는?",
+    question: "임진왜란 동안 이순신이 진중에서 직접 쓴 기록은?",
     choices: ["난중일기", "징비록", "열하일기", "한중록"],
     answer: 0,
     explanation: "이순신이 쓴 일기로, 정조 때 『이충무공전서』를 펴내며 '난중일기'라 이름 붙였다.",
@@ -112,7 +112,7 @@ const QUESTIONS = [
   {
     id: "wg-02",
     category: "세계지리",
-    question: "적도(Equator)에서 나라 이름을 따온 남아메리카의 나라는?",
+    question: "적도에서 나라 이름을 따온 남아메리카의 나라는?",
     choices: ["에콰도르", "콜롬비아", "베네수엘라", "볼리비아"],
     answer: 0,
     explanation: "에콰도르는 나라를 가로지르는 적도에서 이름을 따왔다.",
@@ -132,10 +132,10 @@ const QUESTIONS = [
   {
     id: "wg-04",
     category: "세계지리",
-    question: "대체로 경도 180°선을 따라 그어, 넘어가면 날짜가 바뀌는 선은?",
+    question: "대체로 경도 180°선을 따라 그은 선으로, 서쪽 지역이 동쪽보다 하루 앞서게 되는 기준선은?",
     choices: ["날짜 변경선", "본초 자오선", "북회귀선", "남회귀선"],
     answer: 0,
-    explanation: "날짜 변경선의 서쪽 지역은 동쪽 지역보다 날짜가 하루 앞선다.",
+    explanation: "날짜 변경선은 대체로 180° 경선을 따르며, 이 선을 넘으면 날짜가 하루 바뀐다.",
     source: "National Geographic Education 'Date Line'",
     sourceUrl: "https://education.nationalgeographic.org/resource/date-line/"
   },
@@ -203,7 +203,7 @@ const QUESTIONS = [
     id: "sc-01",
     category: "과학",
     question: "소리의 세기(크기)를 나타낼 때 쓰는 단위는?",
-    choices: ["데시벨", "헤르츠", "칸델라", "파스칼"],
+    choices: ["데시벨", "헤르츠", "칸델라", "루멘"],
     answer: 0,
     explanation: "데시벨(dB)은 소리의 세기를 비교해 나타내는 단위로, 소음 기준에도 쓰인다.",
     source: "Encyclopaedia Britannica 'decibel'",
@@ -345,7 +345,7 @@ const QUESTIONS = [
     question: "마지막 악장에 실러의 시 「환희의 송가」를 합창으로 넣은 교향곡 9번의 작곡가는?",
     choices: ["베토벤", "모차르트", "하이든", "브람스"],
     answer: 0,
-    explanation: "베토벤 교향곡 9번의 마지막 악장은 실러의 시 「환희에 부쳐」에 곡을 붙인 합창이다.",
+    explanation: "베토벤 교향곡 9번의 마지막 악장은 실러의 시 「환희의 송가」에 곡을 붙인 합창이다.",
     source: "베토벤하우스 본(Beethoven-Haus Bonn) 'Symphony no. 9 op. 125'",
     sourceUrl: "https://www.beethoven.de/en/work/view/5556714292117504/symphony+no.+9+(d+minor)+op.+125"
   },
@@ -382,7 +382,7 @@ const QUESTIONS = [
   {
     id: "ac-09",
     category: "예술과 문화",
-    question: "가야의 가실왕 때 만들어졌다고 전하는 열두 줄 현악기는?",
+    question: "가실왕 때 만들어졌다고 전하는 열두 줄 현악기는?",
     choices: ["가야금", "거문고", "해금", "아쟁"],
     answer: 0,
     explanation: "『삼국사기』에 가실왕이 가야금을 만들고 우륵이 이 악기를 위한 12곡을 지었다고 전한다.",
